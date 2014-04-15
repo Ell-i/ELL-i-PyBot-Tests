@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20140415 16:17:04.376" generator="Robot 2.8.3 (Python 2.7.3 on linux2)">
+<suite source="/home/asif/Ell-i/Ell-i-Pybot/ELL-i-PyBot-Tests/test-suites/ELL-i-PyBot-Tests.wiki/DigitalRead.rest" id="s1" name="DigitalRead">
+<test id="s1-t1" name="Read high from pin">
+<kw type="kw" name="${HIGH} = DigitalRead.Read High">
+<doc>Read 'HIGH' from pin</doc>
+<arguments>
+<arg>${PIN}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:04.412" level="INFO">Here it uses test library to interact with Ell-i runtime C code for reading input value from pin.</msg>
+<msg timestamp="20140415 16:17:04.412" level="INFO">${HIGH} = None</msg>
+<status status="PASS" endtime="20140415 16:17:04.412" starttime="20140415 16:17:04.412"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:17:04.412" critical="yes" starttime="20140415 16:17:04.411"></status>
+</test>
+<test id="s1-t2" name="Check high from pin">
+<kw type="kw" name="Check High">
+<doc></doc>
+<arguments>
+<arg>${PIN}</arg>
+<arg>${HIGH}</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${pin}</arg>
+<arg>${PIN}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:04.414" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:17:04.414" starttime="20140415 16:17:04.414"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${high}</arg>
+<arg>${HIGH}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:04.415" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:17:04.415" starttime="20140415 16:17:04.415"></status>
+</kw>
+<status status="PASS" endtime="20140415 16:17:04.415" starttime="20140415 16:17:04.413"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:17:04.415" critical="yes" starttime="20140415 16:17:04.413"></status>
+</test>
+<test id="s1-t3" name="Read low from pin">
+<kw type="kw" name="${LOW} = DigitalRead.Read Low">
+<doc>Read 'LOW' from pin</doc>
+<arguments>
+<arg>${PIN}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:04.416" level="INFO">Here it uses test library to interact with Ell-i runtime C code for reading input value from pin.</msg>
+<msg timestamp="20140415 16:17:04.417" level="INFO">${LOW} = None</msg>
+<status status="PASS" endtime="20140415 16:17:04.416" starttime="20140415 16:17:04.416"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:17:04.417" critical="yes" starttime="20140415 16:17:04.416"></status>
+</test>
+<test id="s1-t4" name="Check low from pin">
+<kw type="kw" name="Check Low">
+<doc></doc>
+<arguments>
+<arg>${PIN}</arg>
+<arg>${LOW}</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${pin}</arg>
+<arg>${PIN}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:04.418" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:17:04.418" starttime="20140415 16:17:04.418"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${low}</arg>
+<arg>${LOW}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:04.419" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:17:04.419" starttime="20140415 16:17:04.419"></status>
+</kw>
+<status status="PASS" endtime="20140415 16:17:04.419" starttime="20140415 16:17:04.417"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:17:04.419" critical="yes" starttime="20140415 16:17:04.417"></status>
+</test>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20140415 16:17:04.420" starttime="20140415 16:17:04.376"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" pass="4" id="s1" name="DigitalRead">DigitalRead</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

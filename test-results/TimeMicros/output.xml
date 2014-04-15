@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20140415 16:10:24.216" generator="Robot 2.8.3 (Python 2.7.3 on linux2)">
+<suite source="/home/asif/Ell-i/Ell-i-Pybot/ELL-i-PyBot-Tests/test-suites/ELL-i-PyBot-Tests.wiki/TimeMicros.rest" id="s1" name="TimeMicros">
+<test id="s1-t1" name="Set the pin to high">
+<kw type="kw" name="Write High">
+<doc></doc>
+<arguments>
+<arg>${PIN}</arg>
+<arg>${HIGH}</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${pin}</arg>
+<arg>${PIN}</arg>
+</arguments>
+<msg timestamp="20140415 16:10:24.253" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:10:24.253" starttime="20140415 16:10:24.252"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${highValue}</arg>
+<arg>${HIGH}</arg>
+</arguments>
+<msg timestamp="20140415 16:10:24.253" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:10:24.253" starttime="20140415 16:10:24.253"></status>
+</kw>
+<status status="PASS" endtime="20140415 16:10:24.253" starttime="20140415 16:10:24.252"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:10:24.254" critical="yes" starttime="20140415 16:10:24.251"></status>
+</test>
+<test id="s1-t2" name="Note time till fifteen seconds">
+<kw type="kw" name="${TIME} = TimeMicros.Note Time">
+<doc>Note time till 15 seconds</doc>
+<arguments>
+</arguments>
+<msg timestamp="20140415 16:10:24.255" level="INFO">Here it uses test library to interact with Ell-i runtime C code to note time till 15 seconds.</msg>
+<msg timestamp="20140415 16:10:24.255" level="INFO">${TIME} = None</msg>
+<status status="PASS" endtime="20140415 16:10:24.255" starttime="20140415 16:10:24.255"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:10:24.255" critical="yes" starttime="20140415 16:10:24.254"></status>
+</test>
+<test id="s1-t3" name="Check the time">
+<kw type="kw" name="${FIFTEENSECONDS} = Check Time">
+<doc></doc>
+<arguments>
+<arg>${TIME}</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${time}</arg>
+<arg>${TIME}</arg>
+</arguments>
+<msg timestamp="20140415 16:10:24.257" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:10:24.257" starttime="20140415 16:10:24.257"></status>
+</kw>
+<msg timestamp="20140415 16:10:24.257" level="INFO">${FIFTEENSECONDS} = None</msg>
+<status status="PASS" endtime="20140415 16:10:24.257" starttime="20140415 16:10:24.256"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${FIFTEENSECONDS}</arg>
+<arg>${true}</arg>
+</arguments>
+<msg timestamp="20140415 16:10:24.258" level="INFO">Argument types are:
+&lt;type 'NoneType'&gt;
+&lt;type 'bool'&gt;</msg>
+<msg timestamp="20140415 16:10:24.259" level="FAIL">None != True</msg>
+<status status="FAIL" endtime="20140415 16:10:24.259" starttime="20140415 16:10:24.257"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="FAIL" endtime="20140415 16:10:24.259" critical="yes" starttime="20140415 16:10:24.255">None != True</status>
+</test>
+<test id="s1-t4" name="Set the pin to low">
+<kw type="kw" name="Write Low">
+<doc></doc>
+<arguments>
+<arg>${PIN}</arg>
+<arg>${LOW}</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${pin}</arg>
+<arg>${PIN}</arg>
+</arguments>
+<msg timestamp="20140415 16:10:24.261" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:10:24.261" starttime="20140415 16:10:24.261"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${lowValue}</arg>
+<arg>${LOW}</arg>
+</arguments>
+<msg timestamp="20140415 16:10:24.261" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:10:24.261" starttime="20140415 16:10:24.261"></status>
+</kw>
+<status status="PASS" endtime="20140415 16:10:24.262" starttime="20140415 16:10:24.260"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:10:24.262" critical="yes" starttime="20140415 16:10:24.259"></status>
+</test>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="FAIL" endtime="20140415 16:10:24.262" starttime="20140415 16:10:24.217"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="3">Critical Tests</stat>
+<stat fail="1" pass="3">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" pass="3" id="s1" name="TimeMicros">TimeMicros</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

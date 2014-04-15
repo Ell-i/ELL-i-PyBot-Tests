@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20140415 16:17:13.310" generator="Robot 2.8.3 (Python 2.7.3 on linux2)">
+<suite source="/home/asif/Ell-i/Ell-i-Pybot/ELL-i-PyBot-Tests/test-suites/ELL-i-PyBot-Tests.wiki/DigitalWrite.rest" id="s1" name="DigitalWrite">
+<test id="s1-t1" name="Write high to pin">
+<kw type="kw" name="DigitalWrite.Write High">
+<doc>Write 'HIGH' to pin</doc>
+<arguments>
+<arg>${PIN}</arg>
+<arg>${HIGH}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:13.347" level="INFO">Here it uses test library to interact with Ell-i runtime C code for writing value to pin.</msg>
+<status status="PASS" endtime="20140415 16:17:13.347" starttime="20140415 16:17:13.346"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:17:13.347" critical="yes" starttime="20140415 16:17:13.346"></status>
+</test>
+<test id="s1-t2" name="Check high from pin">
+<kw type="kw" name="Check High">
+<doc></doc>
+<arguments>
+<arg>${PIN}</arg>
+<arg>${HIGH}</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${pin}</arg>
+<arg>${PIN}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:13.349" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:17:13.349" starttime="20140415 16:17:13.348"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${highValue}</arg>
+<arg>${HIGH}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:13.349" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:17:13.349" starttime="20140415 16:17:13.349"></status>
+</kw>
+<status status="PASS" endtime="20140415 16:17:13.349" starttime="20140415 16:17:13.348"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:17:13.350" critical="yes" starttime="20140415 16:17:13.347"></status>
+</test>
+<test id="s1-t3" name="Write low to pin">
+<kw type="kw" name="DigitalWrite.Write Low">
+<doc>Write 'LOW' to pin</doc>
+<arguments>
+<arg>${PIN}</arg>
+<arg>${LOW}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:13.351" level="INFO">Here it uses test library to interact with Ell-i runtime C code for writing value to pin.</msg>
+<status status="PASS" endtime="20140415 16:17:13.351" starttime="20140415 16:17:13.350"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:17:13.351" critical="yes" starttime="20140415 16:17:13.350"></status>
+</test>
+<test id="s1-t4" name="Check low from pin">
+<kw type="kw" name="Check Low">
+<doc></doc>
+<arguments>
+<arg>${PIN}</arg>
+<arg>${LOW}</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${pin}</arg>
+<arg>${PIN}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:13.353" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:17:13.353" starttime="20140415 16:17:13.352"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${lowValue}</arg>
+<arg>${LOW}</arg>
+</arguments>
+<msg timestamp="20140415 16:17:13.353" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:17:13.353" starttime="20140415 16:17:13.353"></status>
+</kw>
+<status status="PASS" endtime="20140415 16:17:13.353" starttime="20140415 16:17:13.352"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:17:13.354" critical="yes" starttime="20140415 16:17:13.351"></status>
+</test>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20140415 16:17:13.354" starttime="20140415 16:17:13.311"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" pass="4" id="s1" name="DigitalWrite">DigitalWrite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20140415 16:16:56.504" generator="Robot 2.8.3 (Python 2.7.3 on linux2)">
+<suite source="/home/asif/Ell-i/Ell-i-Pybot/ELL-i-PyBot-Tests/test-suites/ELL-i-PyBot-Tests.wiki/PinMode.rest" id="s1" name="PinMode">
+<test id="s1-t1" name="Set input pin mode">
+<kw type="kw" name="PinMode.Input Pin Mode">
+<doc>Logs setting of input pin mode</doc>
+<arguments>
+<arg>${INPIN}</arg>
+<arg>${INMODE}</arg>
+</arguments>
+<msg timestamp="20140415 16:16:56.541" level="INFO">Here it uses test library to interact with Ell-i runtime C code for setting input pin mode for the corresponding pin.</msg>
+<status status="PASS" endtime="20140415 16:16:56.541" starttime="20140415 16:16:56.540"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:16:56.541" critical="yes" starttime="20140415 16:16:56.540"></status>
+</test>
+<test id="s1-t2" name="Check input pin mode">
+<kw type="kw" name="Check Input Mode">
+<doc></doc>
+<arguments>
+<arg>${INPIN}</arg>
+<arg>${INMODE}</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${INPIN}</arg>
+<arg>${inputPinNumber}</arg>
+</arguments>
+<msg timestamp="20140415 16:16:56.543" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:16:56.543" starttime="20140415 16:16:56.543"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${INMODE}</arg>
+<arg>${inputPinMode}</arg>
+</arguments>
+<msg timestamp="20140415 16:16:56.544" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:16:56.544" starttime="20140415 16:16:56.543"></status>
+</kw>
+<status status="PASS" endtime="20140415 16:16:56.544" starttime="20140415 16:16:56.542"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:16:56.544" critical="yes" starttime="20140415 16:16:56.541"></status>
+</test>
+<test id="s1-t3" name="Set output pin mode">
+<kw type="kw" name="PinMode.Output Pin Mode">
+<doc>Logs setting of output pin mode</doc>
+<arguments>
+<arg>${OUTPIN}</arg>
+<arg>${OUTMODE}</arg>
+</arguments>
+<msg timestamp="20140415 16:16:56.545" level="INFO">Here it uses test library to interact with Ell-i runtime C code for setting output pin mode for the corresponding pin.</msg>
+<status status="PASS" endtime="20140415 16:16:56.545" starttime="20140415 16:16:56.545"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:16:56.546" critical="yes" starttime="20140415 16:16:56.544"></status>
+</test>
+<test id="s1-t4" name="Check output pin mode">
+<kw type="kw" name="Check Output Mode">
+<doc></doc>
+<arguments>
+<arg>${OUTPIN}</arg>
+<arg>${OUTMODE}</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${OUTPIN}</arg>
+<arg>${outputPinNumber}</arg>
+</arguments>
+<msg timestamp="20140415 16:16:56.548" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:16:56.548" starttime="20140415 16:16:56.547"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${OUTMODE}</arg>
+<arg>${outputPinMode}</arg>
+</arguments>
+<msg timestamp="20140415 16:16:56.548" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:16:56.548" starttime="20140415 16:16:56.548"></status>
+</kw>
+<status status="PASS" endtime="20140415 16:16:56.548" starttime="20140415 16:16:56.546"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:16:56.548" critical="yes" starttime="20140415 16:16:56.546"></status>
+</test>
+<test id="s1-t5" name="Set input pullup mode">
+<kw type="kw" name="PinMode.Input Pullup Mode">
+<doc>Logs setting of input pin pullup mode</doc>
+<arguments>
+<arg>${PULLUPPIN}</arg>
+<arg>${PULLUPMODE}</arg>
+</arguments>
+<msg timestamp="20140415 16:16:56.550" level="INFO">Here it uses test library to interact with Ell-i runtime C code for setting input pin pullup mode for the corresponding pin.</msg>
+<status status="PASS" endtime="20140415 16:16:56.550" starttime="20140415 16:16:56.549"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:16:56.550" critical="yes" starttime="20140415 16:16:56.549"></status>
+</test>
+<test id="s1-t6" name="Check input pullup mode">
+<kw type="kw" name="Check Pullup Mode">
+<doc></doc>
+<arguments>
+<arg>${PULLUPPIN}</arg>
+<arg>${PULLUPMODE}</arg>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${PULLUPPIN}</arg>
+<arg>${pullupPinNumber}</arg>
+</arguments>
+<msg timestamp="20140415 16:16:56.552" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:16:56.552" starttime="20140415 16:16:56.551"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${PULLUPMODE}</arg>
+<arg>${pullupPinMode}</arg>
+</arguments>
+<msg timestamp="20140415 16:16:56.552" level="INFO">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20140415 16:16:56.552" starttime="20140415 16:16:56.552"></status>
+</kw>
+<status status="PASS" endtime="20140415 16:16:56.553" starttime="20140415 16:16:56.551"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140415 16:16:56.553" critical="yes" starttime="20140415 16:16:56.550"></status>
+</test>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20140415 16:16:56.553" starttime="20140415 16:16:56.504"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="6">Critical Tests</stat>
+<stat fail="0" pass="6">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" pass="6" id="s1" name="PinMode">PinMode</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
