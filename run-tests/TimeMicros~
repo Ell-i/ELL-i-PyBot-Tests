@@ -1,8 +1,8 @@
 #!/bin/bash
-TESTNAME=DigitalWrite
+TESTNAME=TimeMicros
 TESTPATH=/home/asif/Ell-i/Ell-i-Pybot/ELL-i-PyBot-Tests/test-scripts/
 pybot \
---variable TESTPATH:$TESTPATH \
+--variable TESTPATH: $TESTPATH \
 --log      ../test-results/$TESTNAME/log.html \
 --report   ../test-results/$TESTNAME/report.html \
 --output   ../test-results/$TESTNAME/output.xml \

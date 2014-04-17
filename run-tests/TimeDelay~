@@ -1,5 +1,5 @@
 #!/bin/bash
-TESTNAME=TimeDelay
+TESTNAME=TimeMicros
 TESTPATH=/home/asif/Ell-i/Ell-i-Pybot/ELL-i-PyBot-Tests/test-scripts/
 pybot \
 --variable TESTPATH:$TESTPATH \

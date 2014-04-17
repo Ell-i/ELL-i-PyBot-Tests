@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20140415 16:10:24.216" generator="Robot 2.8.3 (Python 2.7.3 on linux2)">
+<robot generated="20140417 16:32:48.501" generator="Robot 2.8.3 (Python 2.7.3 on linux2)">
 <suite source="/home/asif/Ell-i/Ell-i-Pybot/ELL-i-PyBot-Tests/test-suites/ELL-i-PyBot-Tests.wiki/TimeMicros.rest" id="s1" name="TimeMicros">
 <test id="s1-t1" name="Set the pin to high">
 <kw type="kw" name="Write High">
@@ -14,10 +14,10 @@
 <arg>${pin}</arg>
 <arg>${PIN}</arg>
 </arguments>
-<msg timestamp="20140415 16:10:24.253" level="INFO">Argument types are:
+<msg timestamp="20140417 16:32:48.546" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:10:24.253" starttime="20140415 16:10:24.252"></status>
+<status status="PASS" endtime="20140417 16:32:48.546" starttime="20140417 16:32:48.546"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -25,31 +25,31 @@
 <arg>${highValue}</arg>
 <arg>${HIGH}</arg>
 </arguments>
-<msg timestamp="20140415 16:10:24.253" level="INFO">Argument types are:
+<msg timestamp="20140417 16:32:48.547" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:10:24.253" starttime="20140415 16:10:24.253"></status>
+<status status="PASS" endtime="20140417 16:32:48.547" starttime="20140417 16:32:48.547"></status>
 </kw>
-<status status="PASS" endtime="20140415 16:10:24.253" starttime="20140415 16:10:24.252"></status>
+<status status="PASS" endtime="20140417 16:32:48.547" starttime="20140417 16:32:48.545"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" endtime="20140415 16:10:24.254" critical="yes" starttime="20140415 16:10:24.251"></status>
+<status status="PASS" endtime="20140417 16:32:48.547" critical="yes" starttime="20140417 16:32:48.545"></status>
 </test>
 <test id="s1-t2" name="Note time till fifteen seconds">
 <kw type="kw" name="${TIME} = TimeMicros.Note Time">
 <doc>Note time till 15 seconds</doc>
 <arguments>
 </arguments>
-<msg timestamp="20140415 16:10:24.255" level="INFO">Here it uses test library to interact with Ell-i runtime C code to note time till 15 seconds.</msg>
-<msg timestamp="20140415 16:10:24.255" level="INFO">${TIME} = None</msg>
-<status status="PASS" endtime="20140415 16:10:24.255" starttime="20140415 16:10:24.255"></status>
+<msg timestamp="20140417 16:32:48.548" level="INFO">Here it uses test library to interact with Ell-i runtime C code to note time till 15 seconds.</msg>
+<msg timestamp="20140417 16:32:48.549" level="INFO">${TIME} = None</msg>
+<status status="PASS" endtime="20140417 16:32:48.549" starttime="20140417 16:32:48.548"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" endtime="20140415 16:10:24.255" critical="yes" starttime="20140415 16:10:24.254"></status>
+<status status="PASS" endtime="20140417 16:32:48.549" critical="yes" starttime="20140417 16:32:48.548"></status>
 </test>
 <test id="s1-t3" name="Check the time">
 <kw type="kw" name="${FIFTEENSECONDS} = Check Time">
@@ -63,13 +63,13 @@
 <arg>${time}</arg>
 <arg>${TIME}</arg>
 </arguments>
-<msg timestamp="20140415 16:10:24.257" level="INFO">Argument types are:
+<msg timestamp="20140417 16:32:48.551" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:10:24.257" starttime="20140415 16:10:24.257"></status>
+<status status="PASS" endtime="20140417 16:32:48.551" starttime="20140417 16:32:48.550"></status>
 </kw>
-<msg timestamp="20140415 16:10:24.257" level="INFO">${FIFTEENSECONDS} = None</msg>
-<status status="PASS" endtime="20140415 16:10:24.257" starttime="20140415 16:10:24.256"></status>
+<msg timestamp="20140417 16:32:48.551" level="INFO">${FIFTEENSECONDS} = None</msg>
+<status status="PASS" endtime="20140417 16:32:48.551" starttime="20140417 16:32:48.550"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -77,16 +77,16 @@
 <arg>${FIFTEENSECONDS}</arg>
 <arg>${true}</arg>
 </arguments>
-<msg timestamp="20140415 16:10:24.258" level="INFO">Argument types are:
+<msg timestamp="20140417 16:32:48.551" level="INFO">Argument types are:
 &lt;type 'NoneType'&gt;
 &lt;type 'bool'&gt;</msg>
-<msg timestamp="20140415 16:10:24.259" level="FAIL">None != True</msg>
-<status status="FAIL" endtime="20140415 16:10:24.259" starttime="20140415 16:10:24.257"></status>
+<msg timestamp="20140417 16:32:48.552" level="FAIL">None != True</msg>
+<status status="FAIL" endtime="20140417 16:32:48.552" starttime="20140417 16:32:48.551"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="FAIL" endtime="20140415 16:10:24.259" critical="yes" starttime="20140415 16:10:24.255">None != True</status>
+<status status="FAIL" endtime="20140417 16:32:48.553" critical="yes" starttime="20140417 16:32:48.549">None != True</status>
 </test>
 <test id="s1-t4" name="Set the pin to low">
 <kw type="kw" name="Write Low">
@@ -101,10 +101,10 @@
 <arg>${pin}</arg>
 <arg>${PIN}</arg>
 </arguments>
-<msg timestamp="20140415 16:10:24.261" level="INFO">Argument types are:
+<msg timestamp="20140417 16:32:48.555" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:10:24.261" starttime="20140415 16:10:24.261"></status>
+<status status="PASS" endtime="20140417 16:32:48.555" starttime="20140417 16:32:48.554"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -112,22 +112,22 @@
 <arg>${lowValue}</arg>
 <arg>${LOW}</arg>
 </arguments>
-<msg timestamp="20140415 16:10:24.261" level="INFO">Argument types are:
+<msg timestamp="20140417 16:32:48.555" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:10:24.261" starttime="20140415 16:10:24.261"></status>
+<status status="PASS" endtime="20140417 16:32:48.555" starttime="20140417 16:32:48.555"></status>
 </kw>
-<status status="PASS" endtime="20140415 16:10:24.262" starttime="20140415 16:10:24.260"></status>
+<status status="PASS" endtime="20140417 16:32:48.555" starttime="20140417 16:32:48.554"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" endtime="20140415 16:10:24.262" critical="yes" starttime="20140415 16:10:24.259"></status>
+<status status="PASS" endtime="20140417 16:32:48.556" critical="yes" starttime="20140417 16:32:48.553"></status>
 </test>
 <doc></doc>
 <metadata>
 </metadata>
-<status status="FAIL" endtime="20140415 16:10:24.262" starttime="20140415 16:10:24.217"></status>
+<status status="FAIL" endtime="20140417 16:32:48.556" starttime="20140417 16:32:48.502"></status>
 </suite>
 <statistics>
 <total>

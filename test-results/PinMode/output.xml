@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20140415 16:16:56.504" generator="Robot 2.8.3 (Python 2.7.3 on linux2)">
+<robot generated="20140417 16:31:40.010" generator="Robot 2.8.3 (Python 2.7.3 on linux2)">
 <suite source="/home/asif/Ell-i/Ell-i-Pybot/ELL-i-PyBot-Tests/test-suites/ELL-i-PyBot-Tests.wiki/PinMode.rest" id="s1" name="PinMode">
 <test id="s1-t1" name="Set input pin mode">
 <kw type="kw" name="PinMode.Input Pin Mode">
@@ -8,13 +8,13 @@
 <arg>${INPIN}</arg>
 <arg>${INMODE}</arg>
 </arguments>
-<msg timestamp="20140415 16:16:56.541" level="INFO">Here it uses test library to interact with Ell-i runtime C code for setting input pin mode for the corresponding pin.</msg>
-<status status="PASS" endtime="20140415 16:16:56.541" starttime="20140415 16:16:56.540"></status>
+<msg timestamp="20140417 16:31:40.057" level="INFO">Here it uses test library to interact with Ell-i runtime C code for setting input pin mode for the corresponding pin.</msg>
+<status status="PASS" endtime="20140417 16:31:40.058" starttime="20140417 16:31:40.057"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" endtime="20140415 16:16:56.541" critical="yes" starttime="20140415 16:16:56.540"></status>
+<status status="PASS" endtime="20140417 16:31:40.058" critical="yes" starttime="20140417 16:31:40.056"></status>
 </test>
 <test id="s1-t2" name="Check input pin mode">
 <kw type="kw" name="Check Input Mode">
@@ -29,10 +29,10 @@
 <arg>${INPIN}</arg>
 <arg>${inputPinNumber}</arg>
 </arguments>
-<msg timestamp="20140415 16:16:56.543" level="INFO">Argument types are:
+<msg timestamp="20140417 16:31:40.060" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:16:56.543" starttime="20140415 16:16:56.543"></status>
+<status status="PASS" endtime="20140417 16:31:40.060" starttime="20140417 16:31:40.059"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -40,17 +40,17 @@
 <arg>${INMODE}</arg>
 <arg>${inputPinMode}</arg>
 </arguments>
-<msg timestamp="20140415 16:16:56.544" level="INFO">Argument types are:
+<msg timestamp="20140417 16:31:40.060" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:16:56.544" starttime="20140415 16:16:56.543"></status>
+<status status="PASS" endtime="20140417 16:31:40.060" starttime="20140417 16:31:40.060"></status>
 </kw>
-<status status="PASS" endtime="20140415 16:16:56.544" starttime="20140415 16:16:56.542"></status>
+<status status="PASS" endtime="20140417 16:31:40.061" starttime="20140417 16:31:40.059"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" endtime="20140415 16:16:56.544" critical="yes" starttime="20140415 16:16:56.541"></status>
+<status status="PASS" endtime="20140417 16:31:40.061" critical="yes" starttime="20140417 16:31:40.058"></status>
 </test>
 <test id="s1-t3" name="Set output pin mode">
 <kw type="kw" name="PinMode.Output Pin Mode">
@@ -59,13 +59,13 @@
 <arg>${OUTPIN}</arg>
 <arg>${OUTMODE}</arg>
 </arguments>
-<msg timestamp="20140415 16:16:56.545" level="INFO">Here it uses test library to interact with Ell-i runtime C code for setting output pin mode for the corresponding pin.</msg>
-<status status="PASS" endtime="20140415 16:16:56.545" starttime="20140415 16:16:56.545"></status>
+<msg timestamp="20140417 16:31:40.062" level="INFO">Here it uses test library to interact with Ell-i runtime C code for setting output pin mode for the corresponding pin.</msg>
+<status status="PASS" endtime="20140417 16:31:40.062" starttime="20140417 16:31:40.062"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" endtime="20140415 16:16:56.546" critical="yes" starttime="20140415 16:16:56.544"></status>
+<status status="PASS" endtime="20140417 16:31:40.062" critical="yes" starttime="20140417 16:31:40.061"></status>
 </test>
 <test id="s1-t4" name="Check output pin mode">
 <kw type="kw" name="Check Output Mode">
@@ -80,10 +80,10 @@
 <arg>${OUTPIN}</arg>
 <arg>${outputPinNumber}</arg>
 </arguments>
-<msg timestamp="20140415 16:16:56.548" level="INFO">Argument types are:
+<msg timestamp="20140417 16:31:40.064" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:16:56.548" starttime="20140415 16:16:56.547"></status>
+<status status="PASS" endtime="20140417 16:31:40.064" starttime="20140417 16:31:40.064"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -91,17 +91,17 @@
 <arg>${OUTMODE}</arg>
 <arg>${outputPinMode}</arg>
 </arguments>
-<msg timestamp="20140415 16:16:56.548" level="INFO">Argument types are:
+<msg timestamp="20140417 16:31:40.065" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:16:56.548" starttime="20140415 16:16:56.548"></status>
+<status status="PASS" endtime="20140417 16:31:40.065" starttime="20140417 16:31:40.065"></status>
 </kw>
-<status status="PASS" endtime="20140415 16:16:56.548" starttime="20140415 16:16:56.546"></status>
+<status status="PASS" endtime="20140417 16:31:40.065" starttime="20140417 16:31:40.063"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" endtime="20140415 16:16:56.548" critical="yes" starttime="20140415 16:16:56.546"></status>
+<status status="PASS" endtime="20140417 16:31:40.065" critical="yes" starttime="20140417 16:31:40.063"></status>
 </test>
 <test id="s1-t5" name="Set input pullup mode">
 <kw type="kw" name="PinMode.Input Pullup Mode">
@@ -110,13 +110,13 @@
 <arg>${PULLUPPIN}</arg>
 <arg>${PULLUPMODE}</arg>
 </arguments>
-<msg timestamp="20140415 16:16:56.550" level="INFO">Here it uses test library to interact with Ell-i runtime C code for setting input pin pullup mode for the corresponding pin.</msg>
-<status status="PASS" endtime="20140415 16:16:56.550" starttime="20140415 16:16:56.549"></status>
+<msg timestamp="20140417 16:31:40.067" level="INFO">Here it uses test library to interact with Ell-i runtime C code for setting input pin pullup mode for the corresponding pin.</msg>
+<status status="PASS" endtime="20140417 16:31:40.067" starttime="20140417 16:31:40.066"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" endtime="20140415 16:16:56.550" critical="yes" starttime="20140415 16:16:56.549"></status>
+<status status="PASS" endtime="20140417 16:31:40.067" critical="yes" starttime="20140417 16:31:40.066"></status>
 </test>
 <test id="s1-t6" name="Check input pullup mode">
 <kw type="kw" name="Check Pullup Mode">
@@ -131,10 +131,10 @@
 <arg>${PULLUPPIN}</arg>
 <arg>${pullupPinNumber}</arg>
 </arguments>
-<msg timestamp="20140415 16:16:56.552" level="INFO">Argument types are:
+<msg timestamp="20140417 16:31:40.069" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:16:56.552" starttime="20140415 16:16:56.551"></status>
+<status status="PASS" endtime="20140417 16:31:40.069" starttime="20140417 16:31:40.069"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -142,22 +142,22 @@
 <arg>${PULLUPMODE}</arg>
 <arg>${pullupPinMode}</arg>
 </arguments>
-<msg timestamp="20140415 16:16:56.552" level="INFO">Argument types are:
+<msg timestamp="20140417 16:31:40.070" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20140415 16:16:56.552" starttime="20140415 16:16:56.552"></status>
+<status status="PASS" endtime="20140417 16:31:40.070" starttime="20140417 16:31:40.069"></status>
 </kw>
-<status status="PASS" endtime="20140415 16:16:56.553" starttime="20140415 16:16:56.551"></status>
+<status status="PASS" endtime="20140417 16:31:40.070" starttime="20140417 16:31:40.068"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" endtime="20140415 16:16:56.553" critical="yes" starttime="20140415 16:16:56.550"></status>
+<status status="PASS" endtime="20140417 16:31:40.070" critical="yes" starttime="20140417 16:31:40.067"></status>
 </test>
 <doc></doc>
 <metadata>
 </metadata>
-<status status="PASS" endtime="20140415 16:16:56.553" starttime="20140415 16:16:56.504"></status>
+<status status="PASS" endtime="20140417 16:31:40.071" starttime="20140417 16:31:40.011"></status>
 </suite>
 <statistics>
 <total>
