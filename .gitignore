@@ -56,3 +56,6 @@ docs/_build/
 test-suites/
 test-results/
 
+
+# vi backup files
+*~
