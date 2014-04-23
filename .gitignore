@@ -52,3 +52,7 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# ELL-i Robot Framework
+test-suites/
+test-results/
+
