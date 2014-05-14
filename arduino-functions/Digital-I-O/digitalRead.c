@@ -1,3 +1,4 @@
+#include "wiring_digital.h"
 #include <Python.h>
 
 static PyObject* readHigh(PyObject* self, PyObject* args) {
@@ -7,14 +8,14 @@ static PyObject* readHigh(PyObject* self, PyObject* args) {
   	}
 
   	int pinNum = atoi(pin);
-  	char high[10];
-  	sprintf(high, "%d", 1);
+  	//char high[10];
+  	//sprintf(high, "%d", 1);
   	
-  	/*
-  	pinMode(pinNum, OUTPUT);
+  	
+  	pinMode(pinNum, 3);
   	digitalWrite(pinNum, 1);
   	int high = digitalRead(pinNum);
-  	*/
+  	
 
 	return Py_BuildValue("s", high);
 }

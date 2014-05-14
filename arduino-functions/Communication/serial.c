@@ -133,6 +133,6 @@ static PyMethodDef serialCommunication_methods[] = {
 };
 
 void initSerial(void) {
-	(void) Py_InitModule3("Serial", serialCommunication_methods, "Serial Communication Extension Module.");
+	(void) Py_InitModule3("serial", serialCommunication_methods, "Serial Communication Extension Module.");
 }
 
