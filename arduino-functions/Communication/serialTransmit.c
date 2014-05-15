@@ -170,33 +170,33 @@ static PyObject* getPrintlnBytes(PyObject* self, PyObject* args) {
 
 }
 
-static char serialCommunication_docs[] = "c-python extention module for serial communication";
+static char serialTransmitCommunication_docs[] = "c-python extention module for serial communication";
 
-static PyMethodDef serialCommunication_methods[] = {
-	{"beginSerial", (PyCFunction) beginSerial, METH_VARARGS, serialCommunication_docs},
-	{"endSerial",   (PyCFunction) endSerial,   METH_NOARGS,  serialCommunication_docs},	
+static PyMethodDef serialTransmitCommunication_methods[] = {
+	{"beginSerial", (PyCFunction) beginSerial, METH_VARARGS, serialTransmitCommunication_docs},
+	{"endSerial",   (PyCFunction) endSerial,   METH_NOARGS,  serialTransmitCommunication_docs},	
 	
-	{"writeByte",       (PyCFunction) writeByte,       METH_VARARGS, serialCommunication_docs},
-	{"writeBytes",      (PyCFunction) writeBytes,      METH_VARARGS, serialCommunication_docs},
-	{"writeBuffer",     (PyCFunction) writeBuffer,     METH_VARARGS, serialCommunication_docs},
-	{"getWrittenBytes", (PyCFunction) getWrittenBytes, METH_VARARGS, serialCommunication_docs},
+	{"writeByte",       (PyCFunction) writeByte,       METH_VARARGS, serialTransmitCommunication_docs},
+	{"writeBytes",      (PyCFunction) writeBytes,      METH_VARARGS, serialTransmitCommunication_docs},
+	{"writeBuffer",     (PyCFunction) writeBuffer,     METH_VARARGS, serialTransmitCommunication_docs},
+	{"getWrittenBytes", (PyCFunction) getWrittenBytes, METH_VARARGS, serialTransmitCommunication_docs},
 
-	{"printInt",      (PyCFunction) printInt,      METH_VARARGS, serialCommunication_docs},
-	{"printFloat",    (PyCFunction) printFloat,    METH_VARARGS, serialCommunication_docs},
-	{"printChar",     (PyCFunction) printChar,     METH_VARARGS, serialCommunication_docs},
-	{"printString",   (PyCFunction) printString,   METH_VARARGS, serialCommunication_docs},
-	{"getPrintBytes", (PyCFunction) getPrintBytes, METH_VARARGS, serialCommunication_docs},
+	{"printInt",      (PyCFunction) printInt,      METH_VARARGS, serialTransmitCommunication_docs},
+	{"printFloat",    (PyCFunction) printFloat,    METH_VARARGS, serialTransmitCommunication_docs},
+	{"printChar",     (PyCFunction) printChar,     METH_VARARGS, serialTransmitCommunication_docs},
+	{"printString",   (PyCFunction) printString,   METH_VARARGS, serialTransmitCommunication_docs},
+	{"getPrintBytes", (PyCFunction) getPrintBytes, METH_VARARGS, serialTransmitCommunication_docs},
 
-	{"printlnDec",      (PyCFunction) printlnDec,      METH_VARARGS, serialCommunication_docs},
-	{"printlnHex",      (PyCFunction) printlnHex,      METH_VARARGS, serialCommunication_docs},
-	{"printlnOct",      (PyCFunction) printlnOct,      METH_VARARGS, serialCommunication_docs},
-	{"printlnBin",      (PyCFunction) printlnBin,      METH_VARARGS, serialCommunication_docs},
-	{"getPrintlnBytes", (PyCFunction) getPrintlnBytes, METH_VARARGS, serialCommunication_docs},
+	{"printlnDec",      (PyCFunction) printlnDec,      METH_VARARGS, serialTransmitCommunication_docs},
+	{"printlnHex",      (PyCFunction) printlnHex,      METH_VARARGS, serialTransmitCommunication_docs},
+	{"printlnOct",      (PyCFunction) printlnOct,      METH_VARARGS, serialTransmitCommunication_docs},
+	{"printlnBin",      (PyCFunction) printlnBin,      METH_VARARGS, serialTransmitCommunication_docs},
+	{"getPrintlnBytes", (PyCFunction) getPrintlnBytes, METH_VARARGS, serialTransmitCommunication_docs},
 
 	{NULL, NULL}
 };
 
 void initSerial(void) {
-	(void) Py_InitModule3("serial", serialCommunication_methods, "Serial Communication Extension Module.");
+	(void) Py_InitModule3("serialTransmit", serialTransmitCommunication_methods, "Serial Communication Extension Module.");
 }
 
