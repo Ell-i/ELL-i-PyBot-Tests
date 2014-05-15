@@ -22,7 +22,9 @@ static PyObject* writeByte(PyObject* self, PyObject* args) {
 		return NULL;
   	}
 
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
   	//Call the serial.write() function with 1 byte as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
 
 }
 
@@ -32,78 +34,140 @@ static PyObject* writeBytes(PyObject* self, PyObject* args) {
 		return NULL;
   	}
 
+ 	//Always call if (Serial.if(Serial)) to check if port is open for communication
   	//Call the serial.write() function with string of several bytes as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
 
 }
 
 static PyObject* writeBuffer(PyObject* self, PyObject* args) {
 	/// refer to the python C API for -> working with sequences ... 
+
+	//Always call if (Serial.if(Serial)) to check if port is open for communication
+	//Call the serial.write() function with buffer of several bytes and its length as parameter
+	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* getWrittenBytes(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
   	}
+
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.write() function with string of several bytes as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* printInt(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
   	}
+
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.print() function with integer as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* printFloat(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
   	}
+
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.print() function with float as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* printChar(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
-  	}	
+  	}
+
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.print() function with character as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* printString(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
   	}
+
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.print() function with string as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* getPrintBytes(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
   	}
+
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.print() function with string as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* printlnDec(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
   	}
+
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.println() function with character and DEC format as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* printlnHex(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
-  	}
+ 	}
+
+ 	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.println() function with character and HEX format as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* printlnOct(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
   	}
+
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.println() function with character and OCT format as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* printlnBin(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
   	}
+
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.println() function with character and BIN format as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static PyObject* getPrintlnBytes(PyObject* self, PyObject* args) {
 	if (!PyArg_ParseTuple(args, "s", &byts)) {
 		return NULL;
   	}
+
+  	//Always call if (Serial.if(Serial)) to check if port is open for communication
+  	//Call the serial.println() function with string as parameter
+  	//Also, call serial.flush() to wait for transmitting the data
+
 }
 
 static char serialCommunication_docs[] = "c-python extention module for serial communication";
