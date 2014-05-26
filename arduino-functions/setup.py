@@ -15,4 +15,4 @@ include_direcs = [arduelli, system_inc, cmsis, variant]
 setup(name='digitalRead', version='1.0', ext_modules=[Extension('digitalRead', ['Digital-I-O/digitalRead.c'], include_dirs=include_direcs)])
 setup(name='digitalWrite', version='1.0', ext_modules=[Extension('digitalWrite', ['Digital-I-O/digitalWrite.c'], include_dirs=include_direcs)])
 setup(name='pinMode', version='1.0', ext_modules=[Extension('pinMode', ['Digital-I-O/pinMode.c'], include_dirs=include_direcs)])
-
+setup(name='serialTransmit', version='1.0', ext_modules=[Extension('serialTransmit', ['Communication/serialTransmit.c'], include_dirs=include_direcs)])

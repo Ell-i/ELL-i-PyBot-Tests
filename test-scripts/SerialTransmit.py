@@ -4,7 +4,6 @@ TEST CASES START
 
 #Import a serial c-python library here to call the serial functions ...
 
-
 def begin_serial(baudRate):
 	"""Set baud rate for the serial port"""
 
