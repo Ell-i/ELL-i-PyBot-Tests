@@ -5,7 +5,7 @@ TEST CASES START
 from ctypes import *
 
 #Load the emulator shared library. Call the c-functions directly from the python script using ctypes modules.
-emulator = CDLL("nameofsharedlibrary.so")
+emulator = CDLL("../libemulator.so")
 
 #import digitalRead
 
