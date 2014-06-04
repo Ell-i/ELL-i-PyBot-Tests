@@ -1,10 +1,13 @@
 #!/usr/bin/python
+#!/opt/pym32/bin/python
 
 import os
 from subprocess import call
 
 TESTNAME='DigitalWrite'
-TESTPATH=os.environ['HOME']+'/Ell-i/Ell-i-Pybot/ELL-i-PyBot-Tests/test-scripts/'
+TESTPATH=os.environ['HOME']+'/Ell-i-Working-Directory/Ell-i-Software-Testing/ELL-i-PyBot-Tests/test-scripts/'
+
+print TESTPATH
 
 call(
 	'pybot'+

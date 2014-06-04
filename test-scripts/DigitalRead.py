@@ -1,3 +1,5 @@
+#!/opt/pym32/bin/python
+
 """
 TEST CASES START
 """
@@ -13,7 +15,7 @@ emulator = CDLL("../libemulator.so")
 
 def set_pin_mode(pin):
     """Set the pin mode to input"""
-    emulator.pinMode(pin, INPUT);
+    emulator.pinMode(pin, 0);
 
 
 def read_high(pin):

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/opt/pym32/bin/python
 
 import os
 from subprocess import call
