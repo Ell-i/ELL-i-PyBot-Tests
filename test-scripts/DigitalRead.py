@@ -4,35 +4,33 @@
 TEST CASES START
 """
 
-from ctypes import *
-from Utilities import PinMode
+from Utilities import *
 
 #Load the emulator shared library. Call the c-functions directly from the python script using ctypes modules.
 emulator = CDLL("../libemulator.so")
 
-def set_pin_mode(pin):
-    """Set the pin mode to input"""
-    pinNum = c_uint(pin);
-    emulator.pinMode(pinNum.value, PinMode['INPUT']);
+def set_pin_mode(port, pin):
+    """Set the pin mode to output"""
+    emulator.pinMode(GPIO[port]['PIN'+str(pin)], PinMode['OUTPUT']);
 
-
-def read_high(pin):
+def read_high(port, pin):
     """Read 'HIGH' from pin"""
     #print 'Here it uses test library to interact with Ell-i runtime C code for reading input value from pin.'
-    #"""Also returns value for pin"""
-    pinNum = c_uint(pin);
-    high = c_int(1);
-    high.value = emulator.digitalRead(pinNum.value);
+    #"""Also returns value for pin"""    
+    emulator.digitalWrite(GPIO[port]['PIN'+str(pin)], PinValue['HIGH']);
+    emulator.pinMode(GPIO[port]['PIN'+str(pin)], PinMode['INPUT']);
+    high = c_int(0);
+    high.value = emulator.digitalRead(GPIO[port]['PIN'+str(pin)]);    
     return high.value;
 
-
-def read_low(pin):
+def read_low(port, pin):
     """Read 'LOW' from pin"""
     #print 'Here it uses test library to interact with Ell-i runtime C code for reading input value from pin.'
     #"""Also returns value for pin"""
-    pinNum = c_uint(pin);
-    low = c_int(0);
-    low.value = emulator.digitalRead(pinNum.value);
+    emulator.digitalWrite(GPIO[port]['PIN'+str(pin)], PinValue['LOW']);
+    emulator.pinMode(GPIO[port]['PIN'+str(pin)], PinMode['INPUT']);
+    low = c_int(1);
+    low.value = emulator.digitalRead(GPIO[port]['PIN'+str(pin)]);    
     return low.value; 
 
 """
