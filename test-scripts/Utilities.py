@@ -4,9 +4,18 @@
 #used by the test library scripts.
 
 from ctypes import *
+import os
 
-#The following values for pin mode are taken from arduelli_gpio.h for Arduino API
-#compatibility. Such declarations are more readable in test library scripts.
+dllPath = '/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/stm32/build/'
+DLLPATH = os.environ['HOME'] + dllPath
+#############################################################################################
+
+
+
+#############################################################################################
+#The following values for pin mode are taken from arduelli_gpio.h for Arduino API           #
+#compatibility. Such declarations are more readable in test library scripts.                #
+#############################################################################################
 
 zero  = c_uint(0);
 one   = c_uint(1);
@@ -19,6 +28,7 @@ high = c_uint(1);
 low = c_uint(0);
 PinValue = {'HIGH': high.value, 'LOW': low.value};
 
+#############################################################################################
 
 #############################################################################################
 # General purpose I/O ports: A,B,C & D 														#
