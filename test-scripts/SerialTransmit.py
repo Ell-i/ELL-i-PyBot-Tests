@@ -12,7 +12,6 @@ emulator = CDLL(DLLPATH + "libemulator.so")
 
 def begin_serial(baudRate):
 	"""Set baud rate for the serial port"""
-	#emulator.begin(baud_rate);
 	emulator.serialBegin(c_uint(baudRate))
 
 def end_serial():
@@ -20,7 +19,6 @@ def end_serial():
 
 def write_byte(byt):
 	"""Write 1 byte to the serial port"""
-	#emulator.Write(byte);
 	emulator.serialWrite(c_wchar(byt).value)
 
 def write_bytes(byts):

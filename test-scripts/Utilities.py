@@ -29,33 +29,33 @@ PinValue = {'HIGH': high.value, 'LOW': low.value};
 
 SPITransferMode = {'SPI_CONTINUE': zero.value, 'SPI_LAST': one.value};
 
-SPI_CR1_LSBFIRST = c_ushort(0x0080).value;
+SPI_CR1_LSBFIRST = 0x0080;
 SPIBitOrder = {
-	'MSBFIRST': ~SPI_CR1_LSBFIRST, 
-	'LSBFIRST': SPI_CR1_LSBFIRST
+	'MSBFIRST': c_ushort(~SPI_CR1_LSBFIRST).value, 
+	'LSBFIRST': c_ushort(SPI_CR1_LSBFIRST).value
 };
 
-SPI_CR1_BR_0 = c_ushort(0x0008).value;
-SPI_CR1_BR_1 = c_ushort(0x0010).value;
-SPI_CR1_BR_2 = c_ushort(0x0020).value;
+SPI_CR1_BR_0 = 0x0008;
+SPI_CR1_BR_1 = 0x0010;
+SPI_CR1_BR_2 = 0x0020;
 SPIClockDivider = {
-	'SPI_CLOCK_DIV2':   (~SPI_CR1_BR_2 | ~SPI_CR1_BR_1 | ~SPI_CR1_BR_0),
-	'SPI_CLOCK_DIV4':   (~SPI_CR1_BR_2 | ~SPI_CR1_BR_1 |  SPI_CR1_BR_0),
-	'SPI_CLOCK_DIV8':   (~SPI_CR1_BR_2 |  SPI_CR1_BR_1 | ~SPI_CR1_BR_0),
-	'SPI_CLOCK_DIV16':  (~SPI_CR1_BR_2 |  SPI_CR1_BR_1 |  SPI_CR1_BR_0),
-	'SPI_CLOCK_DIV32':  (SPI_CR1_BR_2  | ~SPI_CR1_BR_1 | ~SPI_CR1_BR_0),
-	'SPI_CLOCK_DIV64':  (SPI_CR1_BR_2  | ~SPI_CR1_BR_1 |  SPI_CR1_BR_0),
-	'SPI_CLOCK_DIV128': (SPI_CR1_BR_2  |  SPI_CR1_BR_1 | ~SPI_CR1_BR_0),
-	'SPI_CLOCK_DIV256': (SPI_CR1_BR_2  |  SPI_CR1_BR_1 |  SPI_CR1_BR_0)
+	'SPI_CLOCK_DIV2':   c_ushort(~SPI_CR1_BR_2 | ~SPI_CR1_BR_1 | ~SPI_CR1_BR_0).value,
+	'SPI_CLOCK_DIV4':   c_ushort(~SPI_CR1_BR_2 | ~SPI_CR1_BR_1 |  SPI_CR1_BR_0).value,
+	'SPI_CLOCK_DIV8':   c_ushort(~SPI_CR1_BR_2 |  SPI_CR1_BR_1 | ~SPI_CR1_BR_0).value,
+	'SPI_CLOCK_DIV16':  c_ushort(~SPI_CR1_BR_2 |  SPI_CR1_BR_1 |  SPI_CR1_BR_0).value,
+	'SPI_CLOCK_DIV32':  c_ushort(SPI_CR1_BR_2  | ~SPI_CR1_BR_1 | ~SPI_CR1_BR_0).value,
+	'SPI_CLOCK_DIV64':  c_ushort(SPI_CR1_BR_2  | ~SPI_CR1_BR_1 |  SPI_CR1_BR_0).value,
+	'SPI_CLOCK_DIV128': c_ushort(SPI_CR1_BR_2  |  SPI_CR1_BR_1 | ~SPI_CR1_BR_0).value,
+	'SPI_CLOCK_DIV256': c_ushort(SPI_CR1_BR_2  |  SPI_CR1_BR_1 |  SPI_CR1_BR_0).value
 };
 
-SPI_CR1_CPHA = c_ushort(0x0001).value;
-SPI_CR1_CPOL = c_ushort(0x0002).value;
+SPI_CR1_CPHA = 0x0001;
+SPI_CR1_CPOL = 0x0002;
 SPIDataMode = {
-	'SPI_MODE0': (~SPI_CR1_CPHA | ~SPI_CR1_CPOL),
-	'SPI_MODE1': (SPI_CR1_CPHA  | ~SPI_CR1_CPOL),
-	'SPI_MODE2': (~SPI_CR1_CPHA |  SPI_CR1_CPOL),
-	'SPI_MODE3': (SPI_CR1_CPHA  |  SPI_CR1_CPOL)
+	'SPI_MODE0': c_ushort(~SPI_CR1_CPHA | ~SPI_CR1_CPOL).value,
+	'SPI_MODE1': c_ushort(SPI_CR1_CPHA  | ~SPI_CR1_CPOL).value,
+	'SPI_MODE2': c_ushort(~SPI_CR1_CPHA |  SPI_CR1_CPOL).value,
+	'SPI_MODE3': c_ushort(SPI_CR1_CPHA  |  SPI_CR1_CPOL).value
 };
 
 #############################################################################################
