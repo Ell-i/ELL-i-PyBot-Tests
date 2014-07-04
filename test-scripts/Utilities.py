@@ -10,8 +10,6 @@ dllPath = '/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/stm32/bui
 DLLPATH = os.environ['HOME'] + dllPath
 #############################################################################################
 
-
-
 #############################################################################################
 #The following values for pin mode are taken from arduelli_gpio.h for Arduino API           #
 #compatibility. Such declarations are more readable in test library scripts.                #
@@ -21,12 +19,44 @@ zero  = c_uint(0);
 one   = c_uint(1);
 two   = c_uint(2);
 three = c_uint(3);
+
 PinMode = {'INPUT': zero.value, 'INPUT_PULLUP': one.value,\
 'INPUT_PULLDOWN': two.value, 'OUTPUT': three.value};
 
 high = c_uint(1);
 low = c_uint(0);
 PinValue = {'HIGH': high.value, 'LOW': low.value};
+
+SPITransferMode = {'SPI_CONTINUE': zero.value, 'SPI_LAST': one.value};
+
+SPI_CR1_LSBFIRST = c_ushort(0x0080).value;
+SPIBitOrder = {
+	'MSBFIRST': ~SPI_CR1_LSBFIRST, 
+	'LSBFIRST': SPI_CR1_LSBFIRST
+};
+
+SPI_CR1_BR_0 = c_ushort(0x0008).value;
+SPI_CR1_BR_1 = c_ushort(0x0010).value;
+SPI_CR1_BR_2 = c_ushort(0x0020).value;
+SPIClockDivider = {
+	'SPI_CLOCK_DIV2':   (~SPI_CR1_BR_2 | ~SPI_CR1_BR_1 | ~SPI_CR1_BR_0),
+	'SPI_CLOCK_DIV4':   (~SPI_CR1_BR_2 | ~SPI_CR1_BR_1 |  SPI_CR1_BR_0),
+	'SPI_CLOCK_DIV8':   (~SPI_CR1_BR_2 |  SPI_CR1_BR_1 | ~SPI_CR1_BR_0),
+	'SPI_CLOCK_DIV16':  (~SPI_CR1_BR_2 |  SPI_CR1_BR_1 |  SPI_CR1_BR_0),
+	'SPI_CLOCK_DIV32':  (SPI_CR1_BR_2  | ~SPI_CR1_BR_1 | ~SPI_CR1_BR_0),
+	'SPI_CLOCK_DIV64':  (SPI_CR1_BR_2  | ~SPI_CR1_BR_1 |  SPI_CR1_BR_0),
+	'SPI_CLOCK_DIV128': (SPI_CR1_BR_2  |  SPI_CR1_BR_1 | ~SPI_CR1_BR_0),
+	'SPI_CLOCK_DIV256': (SPI_CR1_BR_2  |  SPI_CR1_BR_1 |  SPI_CR1_BR_0)
+};
+
+SPI_CR1_CPHA = c_ushort(0x0001).value;
+SPI_CR1_CPOL = c_ushort(0x0002).value;
+SPIDataMode = {
+	'SPI_MODE0': (~SPI_CR1_CPHA | ~SPI_CR1_CPOL),
+	'SPI_MODE1': (SPI_CR1_CPHA  | ~SPI_CR1_CPOL),
+	'SPI_MODE2': (~SPI_CR1_CPHA |  SPI_CR1_CPOL),
+	'SPI_MODE3': (SPI_CR1_CPHA  |  SPI_CR1_CPOL)
+};
 
 #############################################################################################
 
@@ -55,22 +85,22 @@ PinValue = {'HIGH': high.value, 'LOW': low.value};
 #DEFINE_GPIO_PIN(A, 14), 	GPIOPIN[16]		# 16 PA14  	TX2		SWCLK 
 #DEFINE_GPIO_PIN(A, 15), 	GPIOPIN[10]		# 10 PA15 	D10 
 GPIO_PORT_A = {
-	'PIN0':  c_uint(28).value,
-	'PIN1':  c_uint(29).value,
-	'PIN2':  c_uint(7).value,
-	'PIN3':  c_uint(6).value,
-	'PIN4':  c_uint(34).value,
-	'PIN5':  c_uint(26).value,
-	'PIN6':  c_uint(27).value,
-	'PIN7':  c_uint(5).value,
-	'PIN8':  c_uint(2).value,
-	'PIN9':  c_uint(1).value,
-	'PIN10': c_uint(0).value,
-	'PIN11': c_uint(35).value,
-	'PIN12': c_uint(36).value,
-	'PIN13': c_uint(37).value,
-	'PIN14': c_uint(16).value,
-	'PIN15': c_uint(10).value
+	0:  c_uint(28).value,
+	1:  c_uint(29).value,
+	2:  c_uint(7).value,
+	3:  c_uint(6).value,
+	4:  c_uint(34).value,
+	5:  c_uint(26).value,
+	6:  c_uint(27).value,
+	7:  c_uint(5).value,
+	8:  c_uint(2).value,
+	9:  c_uint(1).value,
+	10: c_uint(0).value,
+	11: c_uint(35).value,
+	12: c_uint(36).value,
+	13: c_uint(37).value,
+	14: c_uint(16).value,
+	15: c_uint(10).value
 };
 #############################################################################################
 
@@ -90,18 +120,18 @@ GPIO_PORT_A = {
 #DEFINE_GPIO_PIN(B, 11),	GPIOPIN[9]   	#  9 PB11 	D9 
 #DEFINE_GPIO_PIN(B, 12),	GPIOPIN[40]  	# 40 PB12 	SPI2 NSS
 GPIO_PORT_B = {
-	'PIN0':  c_uint(32).value, 
-	'PIN1':  c_uint(33).value, 
-	'PIN3':  c_uint(13).value, 	
-	'PIN4':  c_uint(12).value, 
-	'PIN5':  c_uint(11).value, 
-	'PIN6':  c_uint(18).value, 
-	'PIN7':  c_uint(19).value, 	
-	'PIN8':  c_uint(21).value, 	
-	'PIN9':  c_uint(20).value, 	
-	'PIN10': c_uint(8).value,	
-	'PIN11': c_uint(9).value,
-	'PIN12': c_uint(40).value
+	0:  c_uint(32).value, 
+	1:  c_uint(33).value, 
+	3:  c_uint(13).value, 	
+	4:  c_uint(12).value, 
+	5:  c_uint(11).value, 
+	6:  c_uint(18).value, 
+	7:  c_uint(19).value, 	
+	8:  c_uint(21).value, 	
+	9:  c_uint(20).value, 	
+	10: c_uint(8).value,	
+	11: c_uint(9).value,
+	12: c_uint(40).value
 };
 #############################################################################################
 
@@ -119,16 +149,16 @@ GPIO_PORT_B = {
 #DEFINE_GPIO_PIN(C,  8), 	GPIOPIN[4]  		#  4 PC8  	D4 
 #DEFINE_GPIO_PIN(C,  9), 	GPIOPIN[3]  		#  3 PC9  	D3 
 GPIO_PORT_C = {
-	'PIN0': c_uint(22).value, 
-	'PIN1': c_uint(23).value, 
-	'PIN2': c_uint(24).value, 	
-	'PIN3': c_uint(25).value, 	
-	'PIN4': c_uint(30).value, 
-	'PIN5': c_uint(31).value,  
-	'PIN6': c_uint(14).value, 
-	'PIN7': c_uint(15).value, 	
-	'PIN8': c_uint(4).value, 	
-	'PIN9': c_uint(3).value
+	0: c_uint(22).value, 
+	1: c_uint(23).value, 
+	2: c_uint(24).value, 	
+	3: c_uint(25).value, 	
+	4: c_uint(30).value, 
+	5: c_uint(31).value,  
+	6: c_uint(14).value, 
+	7: c_uint(15).value, 	
+	8: c_uint(4).value, 	
+	9: c_uint(3).value
 };
 #############################################################################################
 
@@ -137,7 +167,7 @@ GPIO_PORT_C = {
 #############################################################################################
 #DEFINE_GPIO_PIN(D,  2), 	GPIOPIN[17] 		# 17 PD2 	RX2
 GPIO_PORT_D = {
-	'PIN2': c_uint(17).value
+	2: c_uint(17).value
 };
 #############################################################################################
 
@@ -147,8 +177,8 @@ GPIO_PORT_D = {
 #DEFINE_GPIO_PIN(F,  6), 	GPIOPIN[39] 		# 71 PF6  SCL1
 #DEFINE_GPIO_PIN(F,  7), 	GPIOPIN[38] 		# 70 PF7  SDA1
 GPIO_PORT_F = {
-	'PIN6': c_uint(39).value, 
-	'PIN7': c_uint(38).value 
+	6: c_uint(39).value, 
+	7: c_uint(38).value 
 };
 #############################################################################################
 

@@ -12,20 +12,21 @@ emulator = CDLL(DLLPATH + "libemulator.so")
 
 def set_pin_mode(port, pin):
     """Set the pin mode to output"""
-    emulator.pinMode(GPIO[port]['PIN'+str(pin)], PinMode['OUTPUT']);
+    #'PIN'+str(pin)
+    emulator.pinMode(GPIO[port][pin], PinMode['OUTPUT']);
 
 def read_high(port, pin):
-    emulator.digitalWrite(GPIO[port]['PIN'+str(pin)], PinValue['HIGH']);
-    emulator.pinMode(GPIO[port]['PIN'+str(pin)], PinMode['INPUT']);
+    emulator.digitalWrite(GPIO[port][pin], PinValue['HIGH']);
+    emulator.pinMode(GPIO[port][pin], PinMode['INPUT']);
     high = c_bool(0);
-    high.value = emulator.digitalRead(GPIO[port]['PIN'+str(pin)]);    
+    high.value = emulator.digitalRead(GPIO[port][pin]);    
     return high.value;
 
 def read_low(port, pin):
-    emulator.digitalWrite(GPIO[port]['PIN'+str(pin)], PinValue['LOW']);
-    emulator.pinMode(GPIO[port]['PIN'+str(pin)], PinMode['INPUT']);
+    emulator.digitalWrite(GPIO[port][pin], PinValue['LOW']);
+    emulator.pinMode(GPIO[port][pin], PinMode['INPUT']);
     low = c_bool(1);
-    low.value = emulator.digitalRead(GPIO[port]['PIN'+str(pin)]);    
+    low.value = emulator.digitalRead(GPIO[port][pin]);    
     return low.value; 
 
 """

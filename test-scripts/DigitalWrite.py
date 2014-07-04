@@ -13,13 +13,13 @@ emulator = CDLL(DLLPATH + "libemulator.so")
 #import digitalWrite
 
 def set_pin_mode(port, pin):
-    emulator.pinMode(GPIO[port]['PIN'+str(pin)], PinMode['OUTPUT']);
+    emulator.pinMode(GPIO[port][pin], PinMode['OUTPUT']);
 
 def write_high(port, pin):
-    emulator.digitalWrite(GPIO[port]['PIN'+str(pin)], PinValue['HIGH']);
+    emulator.digitalWrite(GPIO[port][pin], PinValue['HIGH']);
 
 def write_low(port, pin):
-    emulator.digitalWrite(GPIO[port]['PIN'+str(pin)], PinValue['LOW']);
+    emulator.digitalWrite(GPIO[port][pin], PinValue['LOW']);
 
 """
 TEST CASES END

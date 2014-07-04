@@ -11,13 +11,13 @@ from Utilities import *
 emulator = CDLL(DLLPATH + "libemulator.so")
 
 def input_pin_mode(port, pin):
-    emulator.pinMode(GPIO[port]['PIN'+str(pin)], PinMode['INPUT']);
+    emulator.pinMode(GPIO[port][pin], PinMode['INPUT']);
 
 def output_pin_mode(port, pin):
-    emulator.pinMode(GPIO[port]['PIN'+str(pin)], PinMode['OUTPUT']);
+    emulator.pinMode(GPIO[port][pin], PinMode['OUTPUT']);
     
 def input_pullup_mode(port, pin):
-    emulator.pinMode(GPIO[port]['PIN'+str(pin)], PinMode['INPUT_PULLUP']);
+    emulator.pinMode(GPIO[port][pin], PinMode['INPUT_PULLUP']);
 
 """
 TEST CASES END

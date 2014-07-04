@@ -1,17 +1,27 @@
+#!/opt/pym32/bin/python
+
 """
 TEST CASES START
 """
 
-#Import a serial c-python library here to call the serial functions ...
+from Utilities import *
+
+#Load the emulator shared library. Call the c-functions directly from 
+#the python script using ctypes modules.
+emulator = CDLL(DLLPATH + "libemulator.so")
 
 def begin_serial(baudRate):
 	"""Set baud rate for the serial port"""
+	#emulator.begin(baud_rate);
+	emulator.serialBegin(c_uint(baudRate))
 
 def end_serial():
 	"""Close the serial port to be used as GPIO pins"""
 
 def write_byte(byt):
 	"""Write 1 byte to the serial port"""
+	#emulator.Write(byte);
+	emulator.serialWrite(c_wchar(byt).value)
 
 def write_bytes(byts):
 	"""Write series of bytes to the serial port"""
