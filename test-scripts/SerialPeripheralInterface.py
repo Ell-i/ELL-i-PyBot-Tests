@@ -13,55 +13,28 @@ emulator = CDLL(DLLPATH + "libemulator.so")
 #-------------------------------------------------------------------------------------------------------#
 #Utility functions outside library test functions
 #-------------------------------------------------------------------------------------------------------#
-def msbFirst(slaveSelectPin):
-	emulator.setBitOrder(c_ubyte(slaveSelectPin).value, SPIBitOrder['MSBFIRST']);
-def lsbFirst(slaveSelectPin):
-	emulator.setBitOrder(c_ubyte(slaveSelectPin).value, SPIBitOrder['LSBFIRST']);
+
 setBitOrder = {
-	0: msbFirst, 
-	1: lsbFirst
+	0: lambda slaveSelectPin: emulator.spiSetBitOrder(c_ubyte(slaveSelectPin).value, SPIBitOrder['MSBFIRST']), 
+	1: lambda slaveSelectPin: emulator.spiSetBitOrder(c_ubyte(slaveSelectPin).value, SPIBitOrder['LSBFIRST'])
 };
 
-def spiClockDiv2(slaveSelectPin):
-	emulator.setClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV2']);
-def spiClockDiv4(slaveSelectPin):
-	emulator.setClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV4']);
-def spiClockDiv8(slaveSelectPin):
-	emulator.setClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV8']);
-def spiClockDiv16(slaveSelectPin):
-	emulator.setClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV16']);
-def spiClockDiv32(slaveSelectPin):
-	emulator.setClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV32']);
-def spiClockDiv64(slaveSelectPin):
-	emulator.setClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV64']);
-def spiClockDiv128(slaveSelectPin):
-	emulator.setClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV128']);
-def spiClockDiv256(slaveSelectPin):
-	emulator.setClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV256']);
 setClockDivider = {
-	2: spiClockDiv2, 
-	4: spiClockDiv4, 
-	8: spiClockDiv8, 
-	16: spiClockDiv16, 
-	32: spiClockDiv32, 
-	64: spiClockDiv64, 
-	128: spiClockDiv128, 
-	256: spiClockDiv256
+	2:   lambda slaveSelectPin: emulator.spiSetClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV2']),
+	4:   lambda slaveSelectPin: emulator.spiSetClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV4']),
+	8:   lambda slaveSelectPin: emulator.spiSetClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV8']),
+	16:  lambda slaveSelectPin: emulator.spiSetClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV16']),
+	32:  lambda slaveSelectPin: emulator.spiSetClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV32']),
+	64:  lambda slaveSelectPin: emulator.spiSetClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV64']),
+	128: lambda slaveSelectPin: emulator.spiSetClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV128']),
+	256: lambda slaveSelectPin: emulator.spiSetClockDivider(c_ubyte(slaveSelectPin).value, SPIClockDivider['SPI_CLOCK_DIV256'])
 };
 
-def spiMode0(slaveSelectPin):
-	emulator.setDataMode(c_ubyte(slaveSelectPin).value, SPIDataMode['SPI_MODE0']);
-def spiMode1(slaveSelectPin):
-	emulator.setDataMode(c_ubyte(slaveSelectPin).value, SPIDataMode['SPI_MODE1']);
-def spiMode2(slaveSelectPin):
-	emulator.setDataMode(c_ubyte(slaveSelectPin).value, SPIDataMode['SPI_MODE2']);
-def spiMode3(slaveSelectPin):
-	emulator.setDataMode(c_ubyte(slaveSelectPin).value, SPIDataMode['SPI_MODE3']);
 setDataMode = {
-	0: spiMode0,
-	1: spiMode1,
-	2: spiMode2,
-	3: spiMode3
+	0: lambda slaveSelectPin: emulator.spiSetDataMode(c_ubyte(slaveSelectPin).value, SPIDataMode['SPI_MODE0']),
+	1: lambda slaveSelectPin: emulator.spiSetDataMode(c_ubyte(slaveSelectPin).value, SPIDataMode['SPI_MODE1']),
+	2: lambda slaveSelectPin: emulator.spiSetDataMode(c_ubyte(slaveSelectPin).value, SPIDataMode['SPI_MODE2']),
+	3: lambda slaveSelectPin: emulator.spiSetDataMode(c_ubyte(slaveSelectPin).value, SPIDataMode['SPI_MODE3'])
 };
 #-------------------------------------------------------------------------------------------------------#
 
@@ -70,11 +43,11 @@ setDataMode = {
 #-------------------------------------------------------------------------------------------------------#
 def begin_spi(slaveSelectPin):
 	"""Begin the SPI port"""
-	emulator.begin(c_ubyte(slaveSelectPin).value);
+	emulator.spiBegin(c_ubyte(slaveSelectPin).value);
 
 def end_spi(slaveSelectPin):
 	"""End the SPI port"""
-	emulator.end(c_ubyte(slaveSelectPin).value);
+	emulator.spiEnd(c_ubyte(slaveSelectPin).value);
 
 def bit_order(slaveSelectPin, bitOrder):
 	"""Sets the bit order to LSB or MSB"""
@@ -90,7 +63,7 @@ def data_mode(slaveSelectPin, dataMode):
 
 def transfer_value(slaveSelectPin, value):
 	"""Transfer the value from SPI port using the MOSI pin"""
-	emulator.transfer(c_ubyte(slaveSelectPin).value, value);
+	emulator.spiTransfer(c_ubyte(slaveSelectPin).value, value);
 #-------------------------------------------------------------------------------------------------------#
 
 """
