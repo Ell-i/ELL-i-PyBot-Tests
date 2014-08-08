@@ -6,8 +6,9 @@
 from ctypes import *
 import os
 
-dllPath = '/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/stm32/build/'
-DLLPATH = os.environ['HOME'] + dllPath
+#dllPath = '/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/stm32/build/'
+#DLLPATH = os.environ['HOME'] + dllPath
+DLLPATH = '/home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/stm32/build/'
 #############################################################################################
 
 #############################################################################################
