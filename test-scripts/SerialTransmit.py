@@ -10,6 +10,8 @@ from Utilities import *
 #the python script using ctypes modules.
 emulator = CDLL(DLLPATH + "libemulator.so")
 
+#Make the test cases fail, if not implemented yet -> read RF guide 
+
 def begin_serial(baudRate):
 	"""Set baud rate for the serial port"""
 	emulator.serialBegin(c_uint(baudRate))
