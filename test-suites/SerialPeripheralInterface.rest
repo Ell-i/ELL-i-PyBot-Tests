@@ -1,0 +1,43 @@
+Arduino Serial Peripheral Interface `<http://arduino.cc/en/Reference/SPI>`_
+
+================ ============================== ============================
+Setting          Value                          Value
+================ ============================== ============================
+Library          BuiltIn                        \
+Library          SerialPeripheralInterface.py   \
+Test Setup       Begin SPI                      ${SLAVE_SELECT_PIN}
+Test Teardown    End SPI                        ${SLAVE_SELECT_PIN}
+================ ============================== ============================
+
+========================= =============
+Variable                  Value    
+========================= =============
+${SLAVE_SELECT_PIN}=      ${10}
+${VAL}=                   ${128}
+${MSBFIRST}=              ${0}
+${LSBFIRST}=              ${1}
+${SPI_CLOCK_DIV2}=        ${2}
+${SPI_CLOCK_DIV4}=        ${4}
+${SPI_CLOCK_DIV8}=        ${8}
+${SPI_CLOCK_DIV16}=       ${16}
+${SPI_CLOCK_DIV32}=       ${32}
+${SPI_CLOCK_DIV64}=       ${64}
+${SPI_CLOCK_DIV128}=      ${128}
+${SPI_CLOCK_DIV256}=      ${256}
+${SPI_MODE0}=             ${0}
+${SPI_MODE1}=             ${1}
+${SPI_MODE2}=             ${2}
+${SPI_MODE3}=             ${3}
+========================= =============
+
+=================================== ===================== ===================== ===================== =====================
+Test Case                           Action                Argument              Argument              Argument
+=================================== ===================== ===================== ===================== =====================
+Set Bit Order                       Bit Order             ${SLAVE_SELECT_PIN}   ${LSBFIRST}           \
+\									
+Set Clock Divider                   ${oldClock}=          Clock Divider         ${SLAVE_SELECT_PIN}   ${SPI_CLOCK_DIV8}
+\								
+Set Data Mode                       Data Mode             ${SLAVE_SELECT_PIN}   ${SPI_MODE0}          \
+\									
+Transfer Value From SPI             ${valueTransfered}=   Transfer Value        ${SLAVE_SELECT_PIN}   ${VAL}              
+=================================== ===================== ===================== ===================== =====================
