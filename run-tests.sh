@@ -16,8 +16,13 @@ run_test() {
     pybot  --outputdir $PATH_TO_TESTS/test-results/$1 $PATH_TO_TESTS/testcases/$1.rest
 }
 
+if test -z "$1"; then
+    command="help"
+else
+    command=$1
+fi
 
-case "$1" in
+case "$command" in
   list)
         ls -1 testcases/|grep ".rest"|awk -F '.' '{print $1}'
         ;;
