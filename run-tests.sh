@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Path to ELL-i Runtime
-export ELLIRUNTIME="../Runtime"
+export ELLIRUNTIME="/home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime"
 
 
 
