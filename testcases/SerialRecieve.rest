@@ -1,0 +1,40 @@
+Arduino Serial Communication `<http://arduino.cc/en/Reference/Serial>`_
+
+================ ============================== ==============================
+    Setting          		Value                  			Value
+================ ============================== ==============================
+Library          BuiltIn
+Library          SerialRecieve.py
+Test Setup       Begin Serial 					${BAUD_RATE}
+Test Teardown    End Serial         
+================ ============================== ==============================
+
+================= ============= ============= =============
+   Variable           Value         Value         Value
+================= ============= ============= =============
+${BAUD_RATE}=     ${9600}
+${TIMEOUT}=       ${3000}
+@{BUFFER}=        @{EMPTY}
+${BUFFER_LENGTH}= ${5}
+${TERMINATOR}=    E
+${STRING}=        Asif
+================= ============= ============= =============
+
+====================================================== =================== =================== ================== ==================
+    Test Case                                              Action              Argument            Argument           Argument
+====================================================== =================== =================== ================== ==================
+Set Timeout to wait for Recieving from Serial Port     Set Timeout         ${TIMEOUT}
+Parse Integer from Serial Port                         ${intVal}=          Parse Integer    
+Parse Float from Serial Port                           ${floatVal}=        Parse Float
+Read a Byte from Serial Port                           ${byteVal}=         Read Byte
+Read Bytes from Serial Port                            Read Bytes          @{BUFFER}           ${BUFFER_LENGTH}
+Read Bytes untill Terminating Byte from Serial Port    Read Bytes Untill   ${TERMINATOR}       @{BUFFER}          ${BUFFER_LENGTH}
+Find a String from Serial Port                         ${boolean}=         Find String         ${STRING}
+Find a String from Serial Port Untill Terminal String  ${boolean}=         Find String Untill  ${STRING}          ${TERMINATOR}
+====================================================== =================== =================== ================== ==================
+
+============= ================= ================== ==================
+   Keyword         Action           Argument           Argument
+============= ================= ================== ==================
+\             \                 \                  \
+============= ================= ================== ==================

@@ -1,4 +1,3 @@
-#!/opt/pym32/bin/python
 
 """
 TEST CASES START

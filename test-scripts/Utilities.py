@@ -1,4 +1,3 @@
-#!/opt/pym32/bin/python
 
 #The utilities module is useful for declaring datatypes, functions or classes to be
 #used by the test library scripts.
@@ -6,9 +5,7 @@
 from ctypes import *
 import os
 
-#dllPath = '/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/stm32/build/'
-#DLLPATH = os.environ['HOME'] + dllPath
-DLLPATH = '/home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/stm32/build/'
+DLLPATH = os.environ['ELLIRUNTIME']+"/stm32/build/"
 #############################################################################################
 
 #############################################################################################
