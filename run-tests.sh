@@ -2,18 +2,18 @@
 
 ## Path to ELL-i Runtime
 export ELLIRUNTIME="/home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime"
-
+#export ELLIRUNTIME="../Runtime"
 
 
 ##############################################################################
 ## No user serviceable parts below.
 ##############################################################################
-
+export PATH="/opt/pym32/bin:${PATH}"
 export PATH_TO_TESTS=`dirname $_`
 export PYTHONPATH=$PATH_TO_TESTS/test-scripts:$PYTHONPATH
 
 run_test() {
-    pybot  --outputdir $PATH_TO_TESTS/test-results/$1 $PATH_TO_TESTS/testcases/$1.rest
+    pybot  --outputdir $PATH_TO_TESTS/test-results/$1 $PATH_TO_TESTS/test-cases/$1.rest
 }
 
 if test -z "$1"; then
@@ -24,7 +24,7 @@ fi
 
 case "$command" in
   list)
-        ls -1 testcases/|grep ".rest"|awk -F '.' '{print $1}'
+        ls -1 test-cases/|grep ".rest"|awk -F '.' '{print $1}'
         ;;
   help)
         echo "Usage: ./run-tests.sh command [parameter]"
@@ -39,7 +39,7 @@ case "$command" in
 	echo "          help           This help document"
         ;;
   run-all)
-	TESTS=`ls -1 testcases/|grep ".rest"|awk -F '.' '{print $1}'`
+	TESTS=`ls -1 test-cases/|grep ".rest"|awk -F '.' '{print $1}'`
 	for TEST in $TESTS; do
 	    run_test $TEST
 	done

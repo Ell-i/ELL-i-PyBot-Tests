@@ -55,7 +55,6 @@ docs/_build/
 # ELL-i Robot Framework
 test-results/
 arduino-functions/build/
-run-tests.sh
 
 # vi backup files
 *~
