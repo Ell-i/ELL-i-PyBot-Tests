@@ -6,10 +6,13 @@
 ## Setting path variables by users.
 #############################################################################################
 # Path to ELL-i Runtime
-export ELLIRUNTIME="/home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime"
+export ELLIRUNTIME=${3}
+#"/home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime"
 
 # Path to 32-bit python installation
-export PATH="/opt/pym32/bin:${PATH}"
+#export PATH="/opt/pym32/bin:${PATH}"
+export PATH=${4}:${PATH}
+
 #############################################################################################
 
 
