@@ -1,0 +1,36 @@
+Arduino Time Millis `<http://arduino.cc/en/Reference/Millis>`_
+
+================ ==========================
+    Setting          Value
+================ ==========================
+Library          BuiltIn
+Library          TimeMillis.py
+Test Setup       \          
+Test Teardown    \         
+================ ==========================
+
+============== =============
+   Variable         Value
+============== =============
+${PIN}         ${0}
+${HIGH}        ${true}
+${LOW}         ${false}
+${TIME}        ${10}
+============== =============
+
+=========================== ================== =============== ================
+    Test Case                    Action           Argument        Argument
+=========================== ================== =============== ================
+Set the pin to high         [Setup]            Set Pin Mode    ${PIN}
+\                           Write High         ${PIN}          ${HIGH}
+\                           Should Be Equal    ${PIN}          ${0}
+\                           Should Be Equal    ${HIGH}         ${true}
+
+Note time till ten seconds  ${time}=           Note Time
+\                           Should Be Equal    ${time}         ${TIME}
+
+Set the pin to low          [Setup]            Set Pin Mode    ${PIN}
+\                           Write Low          ${PIN}          ${LOW} 
+\                           Should Be Equal    ${PIN}          ${0}
+\                           Should Be Equal    ${LOW}          ${false}
+=========================== ================== =============== ================

@@ -5,14 +5,16 @@
 #############################################################################################
 ## Setting path variables by users.
 #############################################################################################
-# Path to ELL-i Runtime
-export ELLIRUNTIME=${4}
-#"/home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime"
 
-PYTHON32=${5}
+#Command-line argument as <emulator> or <hardware>
+PLATFORM=${1}
+
+# Path to ELL-i Runtime
+export ELLIRUNTIME=${2}
+
 # Path to 32-bit python installation
-#export PATH="/opt/pym32/bin:${PATH}"
-export PATH=${PYTHON32}:${PATH}
+export PATH=${3}:${PATH}
+
 
 #############################################################################################
 
@@ -21,11 +23,9 @@ export PATH=${PYTHON32}:${PATH}
 #############################################################################################
 ## No user serviceable parts below.
 #############################################################################################
-export PATH_TO_TESTS=`dirname $_`
-#export PYTHONPATH=$PATH_TO_TESTS/test-scripts:$PYTHONPATH
 
-PLATFORM=${1}
-echo "${PLATFORM}"
+export PATH_TO_TESTS=`dirname $_`
+
 run_test() {
 	pybot  --pythonpath test-scripts/${PLATFORM} \
 	--outputdir $PATH_TO_TESTS/test-results/${PLATFORM}/$1 \
@@ -43,10 +43,10 @@ contains() {
 	echo "$flag"
 }
 
-if test -z "$2"; then
+if test -z "$4"; then
 	command="help"
 else
-	command=$2
+	command=$4
 fi
 
 case "$command" in
@@ -57,10 +57,10 @@ case "$command" in
 		;;
 	help)
 		echo ""
-		echo "Usage: ./run-tests.sh command [parameter]"
-		echo "       ./run-tests.sh testname"
+		echo "Usage: ./run-tests.sh <PLATFORM> <path/to/elli-runtime> <path/to/python-and-pybot-binaries> <COMMAND> [parameter]"
+		echo "       e.g. ./run-tests.sh emulator /home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/ /opt/pym32/bin/ run DigitalWrite"
 		echo ""
-		echo "run-tests.sh is a script to launch emulator based test cases."
+		echo "run-tests.sh is a script to launch emulator or hardware based test cases."
 		echo ""
 		echo "Commands: "
 		echo "          list                  List the available test cases"
@@ -79,15 +79,15 @@ case "$command" in
 		;;
 	run)
 		echo ""
-		if test -z "$3"; then
+		if test -z "$5"; then
 			echo "Please provide name of the test suite to run e.g."
 			echo "./run-tests.sh run <test-suite name>"
 		else 
 			TESTS=`ls -1 test-cases/ | grep ".rest" | awk -F '.' '{print $1}'`
 			testAvailable=false
-			testAvailable=`contains $3` 
+			testAvailable=`contains $5` 
 			if test $testAvailable = "true"; then
-				run_test $3
+				run_test $5
 			elif test $testAvailable = "false"; then
 				echo "Test name is wrong. Available tests are:"
 				echo ""
@@ -109,4 +109,5 @@ case "$command" in
 		echo ""
 		;;
 esac
+
 #############################################################################################

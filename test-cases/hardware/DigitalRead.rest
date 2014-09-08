@@ -1,0 +1,34 @@
+Arduino Digital Read `<http://arduino.cc/en/Reference/DigitalRead>`_
+
+================ ============================== =================== 
+Setting          Value							Value               
+================ ============================== =================== 
+Library          BuiltIn                        \                   
+Library          DigitalRead.py                 \                   
+Test Setup       Set Pin Mode                   @{args}             
+Test Teardown    NONE                           \                   
+================ ============================== =================== 
+
+============== =================== ===================
+Variable       Value               Value
+============== =================== ===================
+${PORT}=       A                   \
+${PIN}=        ${0}                \
+@{args}=       ${PORT}             ${PIN}
+============== =================== ===================
+
+==================== ================== ================== ========================= ================
+Test Case            Action             Argument           Argument                  Argument
+==================== ================== ================== ========================= ================
+Read high from pin   [Documentation]    Test Setup:        Test Case: Logs       
+                                        Set the pin mode   state of pin as 'HIGH'.
+                                        to output.         \                         \                                    
+\                    ${high}=           Read High          ${PORT}                   ${PIN}
+\                    Should Be Equal    ${high}            ${true}                   \
+\
+Read low from pin    [Documentation]    Test Setup:        Test Case: Logs       
+                                        Set the pin mode   state of pin as 'LOW'.
+                                        to output.         \                         \     
+\                    ${low}=            Read Low           ${PORT}                   ${PIN}
+\                    Should Be Equal    ${low}             ${false}                  \ 
+==================== ================== ================== ========================= ================

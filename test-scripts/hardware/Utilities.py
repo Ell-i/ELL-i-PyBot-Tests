@@ -6,6 +6,8 @@ from ctypes import *
 import os
 
 DLLPATH = os.environ['ELLIRUNTIME']+"/stm32/build/"
+TESTPATH = os.environ['ELLIRUNTIME']+"/stm32/tests/"
+DigitalWrite = "test_digitalWrite"
 #############################################################################################
 
 #############################################################################################

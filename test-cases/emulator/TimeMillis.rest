@@ -4,7 +4,7 @@ Arduino Time Millis `<http://arduino.cc/en/Reference/Millis>`_
     Setting          Value
 ================ ==========================
 Library          BuiltIn
-Library          ${TESTPATH}/TimeMillis.py
+Library          TimeMillis.py
 Test Setup       \          
 Test Teardown    \         
 ================ ==========================

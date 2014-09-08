@@ -1,0 +1,67 @@
+Arduino Serial Communication `<http://arduino.cc/en/Reference/Serial>`_
+
+================ ============================== ==============================
+    Setting          		Value							Value
+================ ============================== ==============================
+Library          BuiltIn
+Library          SerialTransmit.py
+Test Setup       Begin Serial 					${BAUD_RATE}
+Test Teardown    End Serial         
+================ ============================== ==============================
+
+================= ============= ============= =============
+   Variable           Value         Value         Value
+================= ============= ============= =============
+${INTEGER}        ${9}
+${FLOAT}          ${9.8989}
+${BYTE}           A             
+${STRING}         ABCDE
+${STRING_LENGTH}  ${5}
+@{BUFFER}         A             B             C
+${BUFFER_LENGTH}  ${3}
+${DEC}            ${10}
+${HEX}            ${16}
+${OCT}            ${8}
+${BIN}            ${2}
+${BAUD_RATE}      ${9600}
+================= ============= ============= =============
+
+=================================== ================ =============== ================
+    Test Case                           Action           Argument        Argument
+=================================== ================ =============== ================
+Write Single Byte                   Write Byte       ${BYTE}
+Write Multiple Bytes                Write Bytes      ${STRING}
+Write Buffer of Bytes Written       Write Buffer     ${BUFFER}       ${BUFFER_LENGTH}
+Get Number of Bytes                 ${bytes}=        Writen Bytes    ${STRING}
+\                                   Check Bytes      ${bytes}
+
+Print an Int Number                 Print Int        ${INTEGER}
+Print a Float Number                Print Float      ${FLOAT}
+Print a Char                        Print Char       ${BYTE}
+Print a String                      Print String     ${STRING}
+Get Number of Bytes with Print      ${bytes}=        Print Bytes     ${STRING}
+\                                   Check Bytes      ${bytes}
+
+Print an Alphabet Decimal           PrintLn Dec      ${BYTE}         ${DEC}
+Print an Alphabet Hex               PrintLn Hex      ${BYTE}         ${HEX}
+Print an Alphabet Oct               PrintLn Oct      ${BYTE}         ${OCT}
+Print an Alphabet Bin               PrintLn Bin      ${BYTE}         ${BIN}
+Get Number of Bytes with Println    ${bytes}=        Println Bytes   ${STRING}
+\                                   Check Bytes      ${bytes}
+=================================== ================ =============== ================
+
+============= ================= ================== ==================
+   Keyword         Action           Argument           Argument
+============= ================= ================== ==================
+Writen Bytes  [Arguments]       ${string}
+\             ${bytes}=         Get Written Bytes  ${string}
+\             [Return]          ${bytes}
+Print Bytes   [Arguments]       ${string}
+\             ${bytes}=         Get Print Bytes    ${string}
+\             [Return]          ${bytes}
+Println Bytes [Arguments]       ${string}
+\             ${bytes}=         Get Println Bytes  ${string}
+\             [Return]          ${bytes}
+Check Bytes   [Arguments]       ${numBytes}
+\             Should Be Equal   ${numBytes}        ${STRING_LENGTH}
+============= ================= ================== ==================
