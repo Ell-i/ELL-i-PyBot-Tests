@@ -29,12 +29,12 @@ export PATH_TO_TESTS=`dirname $_`
 run_test() {
 	pybot  --pythonpath test-scripts/${PLATFORM} \
 	--outputdir $PATH_TO_TESTS/test-results/${PLATFORM}/$1 \
-	$PATH_TO_TESTS/test-cases/$1.rest
+	$PATH_TO_TESTS/test-cases/${PLATFORM}/$1.rest
 }
 
 contains() {
 	local flag=false
-	TESTS=`ls -1 test-cases/ | grep ".rest" | awk -F '.' '{print $1}'`
+	TESTS=`ls -1 test-cases/${PLATFORM}/ | grep ".rest" | awk -F '.' '{print $1}'`
 	for test in $TESTS; do
 		if [ "$1" = "$test" ]; then
 			flag=true

@@ -4,10 +4,15 @@
 
 from ctypes import *
 import os
+import subprocess
+import shlex
 
 DLLPATH = os.environ['ELLIRUNTIME']+"/stm32/build/"
 TESTPATH = os.environ['ELLIRUNTIME']+"/stm32/tests/"
-DigitalWrite = "test_digitalWrite"
+DigitalWriteHigh = "test_digitalWriteHigh"
+DigitalWriteLow= "test_digitalWriteLow"
+DigitalReadHigh = "test_digitalReadHigh"
+DigitalReadLow= "test_digitalReadLow"
 #############################################################################################
 
 #############################################################################################
@@ -189,3 +194,85 @@ GPIO = {
 	'D': GPIO_PORT_D,
 	'F': GPIO_PORT_F,
 };
+#############################################################################################
+
+
+
+##########################################################################################################
+#                             Helper Methods Below                                                       #
+##########################################################################################################
+def compile(testPath, testCase):
+    try:
+    	args = shlex.split('/usr/bin/python ./../../../../Tools/stm32flasher/stm32flash.py \
+    		-w ./hardware/ellduino/' + testCase + '.hex -A 0x00000000 /dev/ttyUSB0');
+    	os.chdir(testPath + testCase + "/");        
+        args = shlex.split("'make -s PLATFORM=hardware'");
+        p = subprocess.Popen(args, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
+        output, error = p.communicate();
+        if p.returncode != 0:
+            raise RuntimeError, error;
+    except OSError, log:
+        print log;
+        return False;
+    except subprocess.CalledProcessError, arg:
+        print arg;
+        return false;
+    except RuntimeError, arg:
+        print arg;
+        return False;
+    else:
+        return True;
+##########################################################################################################
+
+##########################################################################################################
+def flash(testPath, testCase):
+    try:
+        os.chdir(testPath + testCase + "/");
+        args = '/usr/bin/python ./../../../../Tools/stm32flasher/stm32flash.py \
+        -w ./hardware/ellduino/' + testCase + '.hex -A 0x00000000 /dev/ttyUSB0';
+        p = subprocess.Popen(args, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
+        output, error = p.communicate();
+        if p.returncode != 0:
+            raise RuntimeError, error;
+    except OSError, log:
+        print log;
+        return False;
+    except subprocess.CalledProcessError, arg:
+        print arg;
+        return false;
+    except RuntimeError, arg:
+        print arg;
+        return False;
+    else:
+        print "Flashing hex file to device completed!"
+        return True;
+##########################################################################################################
+
+##########################################################################################################
+def call_sigrok(channel):
+    try:
+    	args = 'sigrok-cli \
+    	--driver fx2lafw \
+    	--samples 1 \
+    	--channels ' + channel + ' \
+    	--output-format bits \
+    	--output-file sigrok-output';
+        p = subprocess.Popen(args, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
+        output, error = p.communicate();
+        if p.returncode != 0:
+            raise RuntimeError, error;
+    except OSError, log:
+        print log;
+        return False;
+    except subprocess.CalledProcessError, arg:
+        print arg;
+        return false;
+    except RuntimeError, arg:
+        print arg;
+        return False;
+    else:
+        print "Call to sigrok to dump output from device complete!"
+        return True;
+##########################################################################################################
+
+

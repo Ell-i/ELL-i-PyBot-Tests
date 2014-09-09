@@ -5,37 +5,34 @@ TEST CASES START
 
 import re
 from Utilities import *
-import subprocess
-import shlex
-from subprocess import call
-from subprocess import check_call
-from subprocess import check_output
 
-#Load the emulator shared library. Call the c-functions directly from 
-#the python script using ctypes modules.
-#emulator = CDLL(DLLPATH + "libemulator.so")
+CURRENTPATH = os.getcwd();
 
-#import digitalWrite
+def compile_flash_code(setupFlag):
+    try:
+        if setupFlag == "High":
+            compile_ = compile(TESTPATH, DigitalWriteHigh);
+        elif setupFlag == "Low":
+            compile_ = compile(TESTPATH, DigitalWriteLow);
+        else:
+            print "Wrong setup flag parameter!"        
 
-def set_pin_mode(port, pin):
-    print "emulator.pinMode(GPIO[port][pin], PinMode['OUTPUT'])"
+        if compile_ != True:
+            raise RuntimeError, "Compiling the source code failed!"
+    except RuntimeError, arg:
+        print arg;
+    else:
+        print "Source code compiled! HEX file created!"
 
-def write_high(port, pin):
-    CURRENTPATH = os.getcwd();
-    os.chdir(TESTPATH + DigitalWrite + "/");
-    
-    compile = _compile();
-    if compile != True:
-        raise RuntimeError, "Compiling the source code failed!"
-    
-    flash = _flash();
-    if flash != True:
-        raise RuntimeError, "Flashing the device failed!"
+def write_high():
+    flash_ = flash(TESTPATH, DigitalWriteHigh);
+    if flash_ != True:
+        raise RuntimeError, "Flashing the device failed!"  
     
     os.chdir(CURRENTPATH);
     
-    sigrok = _call_sigrok();
-    if sigrok != True:
+    sigrok_ = call_sigrok('0');
+    if sigrok_ != True:
         raise RuntimeError, "Call to sigrok to dump output from device failed!"        
     
     try:
@@ -56,84 +53,55 @@ def write_high(port, pin):
     else:
         print "Test case passed. The value is high at pin!"
 
-def write_low(port, pin):
-    print "emulator.digitalWrite(GPIO[port][pin], PinValue['LOW'])"
+def write_low():
+    flash_ = flash(TESTPATH, DigitalWriteLow);
+    if flash_ != True:
+        raise RuntimeError, "Flashing the device failed!"  
+    
+    os.chdir(CURRENTPATH);
+    
+    sigrok_ = call_sigrok('0');
+    if sigrok_ != True:
+        raise RuntimeError, "Call to sigrok to dump output from device failed!"        
+    
+    try:
+        fo = open("sigrok-output", "r");
+        dataLines = fo.readlines();
+        testLine = dataLines[2][2:];
+        test_output = re.compile('[0-1]');
+        str = re.search(test_output, testLine);
+        assert (str.group() == '0'), "High at pin!"
+    except IOError, arg:
+        print arg;
+        raise RuntimeError, "Couldn't find/read file!"
+    except AssertionError, arg:
+        print arg;
+        raise RuntimeError, "Test case failed. The value is not low at pin!"
+    except RuntimeError, arg:
+        print arg;
+    else:
+        print "Test case passed. The value is low at pin!"
 
+def clean_code(teardownFlag):
+    if teardownFlag == "High":
+        os.chdir(TESTPATH + DigitalWriteHigh + "/");
+    elif teardownFlag == "Low":
+        os.chdir(TESTPATH + DigitalWriteLow + "/");
+    else:
+        print "Wrong teardown flag!"
+
+    try:
+        args = shlex.split("'make clean'");
+        p = subprocess.Popen(args, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
+        output, error = p.communicate();
+        if p.returncode != 0:
+            raise RuntimeError, error;
+    except RuntimeError, arg:
+        print arg;
+        print "Make clean failed!"
+    else:
+        print "Make clean completed!"
+    
 """
 TEST CASES END
 """
-##########################################################################################################
-
-
-
-##########################################################################################################
-#                             Helper Methods Below                                                       #
-##########################################################################################################
-def _compile():
-    args = shlex.split("make -s PLATFORM=hardware");    
-    try:
-        p = subprocess.Popen(args, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
-        arg = p.communicate();
-        if p.returncode != 0:
-            raise RuntimeError, arg;
-    except OSError, log:
-        print log;
-        return False;
-    except subprocess.CalledProcessError, arg:
-        print arg;
-        return false;
-    except RuntimeError, arg:
-        print arg;
-        return False;
-    else:
-        print "Source code compiled! HEX file created!"
-        return True;
-    
-def _flash():
-    args = shlex.split("'/usr/bin/python ./../../../../Tools/stm32flasher/stm32flash.py \
-            -w ./hardware/ellduino/test_digitalWrite.hex \
-            -A 0x00000000 \
-            /dev/ttyUSB0'");
-    try:
-        p = subprocess.Popen(args, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
-        arg = p.communicate();
-        if p.returncode != 0:
-            raise RuntimeError, arg;
-    except OSError, log:
-        print log;
-        return False;
-    except subprocess.CalledProcessError, arg:
-        print arg;
-        return false;
-    except RuntimeError, arg:
-        print arg;
-        return False;
-    else:
-        print "Flashing hex file to device complete!"
-        return True;
-    
-def _call_sigrok():
-    args = shlex.split("sigrok-cli --driver fx2lafw \
-        --samples 1 \
-        --channels 0 \
-        --output-format bits \
-        --output-file sigrok-output");
-
-    try:
-        p = subprocess.Popen(args, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
-        arg = p.communicate();
-        if p.returncode != 0:
-            raise RuntimeError, arg;
-    except OSError, log:
-        print log;
-        return False;
-    except subprocess.CalledProcessError, arg:
-        print arg;
-        return false;
-    except RuntimeError, arg:
-        print arg;
-        return False;
-    else:
-        print "Call to sigrok to dump output from device complete!"
-        return True;
-##########################################################################################################

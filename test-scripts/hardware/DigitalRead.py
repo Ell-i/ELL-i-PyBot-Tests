@@ -3,30 +3,108 @@
 TEST CASES START
 """
 
+import re
 from Utilities import *
 
-#Load the emulator shared library. Call the c-functions directly from 
-#the python script using ctypes modules.
-emulator = CDLL(DLLPATH + "libemulator.so")
+CURRENTPATH = os.getcwd();
 
-def set_pin_mode(port, pin):
-    """Set the pin mode to output"""
-    #'PIN'+str(pin)
-    emulator.pinMode(GPIO[port][pin], PinMode['OUTPUT']);
+def compile_flash_code(setupFlag):
+    try:
+        if setupFlag == "High":
+            compile_ = compile(TESTPATH, DigitalReadHigh);
+        elif setupFlag == "Low":
+            compile_ = compile(TESTPATH, DigitalReadLow);
+        else:
+            print "Wrong setup flag parameter!"        
 
-def read_high(port, pin):
-    emulator.digitalWrite(GPIO[port][pin], PinValue['HIGH']);
-    emulator.pinMode(GPIO[port][pin], PinMode['INPUT']);
-    high = c_bool(0);
-    high.value = emulator.digitalRead(GPIO[port][pin]);    
-    return high.value;
+        if compile_ != True:
+            raise RuntimeError, "Compiling the source code failed!"
+    except RuntimeError, arg:
+        print arg;
+    else:
+        print "Source code compiled! HEX file created!"
 
-def read_low(port, pin):
-    emulator.digitalWrite(GPIO[port][pin], PinValue['LOW']);
-    emulator.pinMode(GPIO[port][pin], PinMode['INPUT']);
-    low = c_bool(1);
-    low.value = emulator.digitalRead(GPIO[port][pin]);    
-    return low.value; 
+def read_high():
+    flash_ = flash(TESTPATH, DigitalReadHigh);
+    if flash_ != True:
+        raise RuntimeError, "Flashing the device failed!"  
+    
+    os.chdir(CURRENTPATH);
+    
+    print CURRENTPATH
+
+    sigrok_ = call_sigrok('1');
+    if sigrok_ != True:
+        raise RuntimeError, "Call to sigrok to dump output from device failed!"        
+    
+    try:
+        fo = open("sigrok-output", "r");
+        dataLines = fo.readlines();
+        testLine = dataLines[2][2:];
+        test_output = re.compile('[0-1]');
+        str = re.search(test_output, testLine);
+        assert (str.group() == '1'), "Low at pin!"
+    except IOError, arg:
+        print arg;
+        raise RuntimeError, "Couldn't find/read file!"
+    except AssertionError, arg:
+        print arg;
+        raise RuntimeError, "Test case failed. The value is not high at pin!"
+    except RuntimeError, arg:
+        print arg;
+    else:
+        print "Test case passed. The value is high at pin!"
+
+def read_low():
+    flash_ = flash(TESTPATH, DigitalReadLow);
+    if flash_ != True:
+        raise RuntimeError, "Flashing the device failed!"  
+    
+    os.chdir(CURRENTPATH);
+    
+    sigrok_ = call_sigrok('1');
+    if sigrok_ != True:
+        raise RuntimeError, "Call to sigrok to dump output from device failed!"        
+    
+    try:
+        fo = open("sigrok-output", "r");
+        dataLines = fo.readlines();
+        testLine = dataLines[2][2:];
+        test_output = re.compile('[0-1]');
+        str = re.search(test_output, testLine);
+        assert (str.group() == '0'), "High at pin!"
+    except IOError, arg:
+        print arg;
+        raise RuntimeError, "Couldn't find/read file!"
+    except AssertionError, arg:
+        print arg;
+        raise RuntimeError, "Test case failed. The value is not low at pin!"
+    except RuntimeError, arg:
+        print arg;
+    else:
+        print "Test case passed. The value is low at pin!"
+
+def clean_code(teardownFlag):
+    if teardownFlag == "High":
+        os.chdir(TESTPATH + DigitalReadHigh + "/");
+    elif teardownFlag == "Low":
+        os.chdir(TESTPATH + DigitalReadLow + "/");
+    else:
+        print "Wrong teardown flag!"
+
+    try:
+        args = shlex.split("'make clean'");
+        p = subprocess.Popen(args, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE);
+        output, error = p.communicate();
+        if p.returncode != 0:
+            raise RuntimeError, error;
+    except RuntimeError, arg:
+        print arg;
+        print "Make clean failed!"
+    else:
+        print "Make clean completed!"
+
+
 
 """
 TEST CASES END
