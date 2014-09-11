@@ -3,9 +3,11 @@
 #used by the test library scripts.
 
 from ctypes import *
+import ctypes
+import subprocess
 import os
 
-DLLPATH = os.environ['ELLIRUNTIME']+"/stm32/build/"
+DLLPATH = os.environ['ELLIRUNTIME']+"/stm32/build/emulator/ellduino/"
 #############################################################################################
 
 #############################################################################################
@@ -187,3 +189,50 @@ GPIO = {
 	'D': GPIO_PORT_D,
 	'F': GPIO_PORT_F,
 };
+#############################################################################################
+
+#############################################################################################
+#Shared library function names and loading shared library into python, common to most       #
+#of test cases                                                                              #
+#############################################################################################
+
+#Load the emulator shared library. 
+emulator = CDLL(DLLPATH + "libsketch.so")
+
+class SerialClass(ctypes.Structure):
+		pass
+
+Serial = ctypes.POINTER(SerialClass).in_dll(emulator, "Serial");
+
+CURRENTDIR = os.getcwd();
+
+os.chdir(DLLPATH);
+
+
+#Get the names of the functions from shared library
+findName = subprocess.check_output("nm -g libsketch.so | grep pinMode", shell=True);   
+templist = findName.split();
+pinMode = templist.pop(2);
+
+findName = subprocess.check_output("nm -g libsketch.so | grep digitalRead", shell=True);   
+templist = findName.split();
+digitalRead = templist.pop(2);
+
+findName = subprocess.check_output("nm -g libsketch.so | grep digitalWrite", shell=True);   
+templist = findName.split();
+digitalWrite = templist.pop(2);
+
+findName = subprocess.check_output("nm -g libsketch.so | grep begin", shell=True);   
+templist = findName.split();
+begin = templist.pop(2);
+
+findName = subprocess.check_output("nm -g libsketch.so | grep write", shell=True);   
+templist = findName.split();
+write = templist.pop(2);
+
+
+os.chdir(CURRENTDIR);
+
+
+
+#############################################################################################

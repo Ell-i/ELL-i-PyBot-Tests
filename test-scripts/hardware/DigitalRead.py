@@ -31,8 +31,6 @@ def read_high():
     
     os.chdir(CURRENTPATH);
     
-    print CURRENTPATH
-
     sigrok_ = call_sigrok('1');
     if sigrok_ != True:
         raise RuntimeError, "Call to sigrok to dump output from device failed!"        

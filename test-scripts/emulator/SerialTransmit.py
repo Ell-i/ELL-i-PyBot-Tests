@@ -5,22 +5,16 @@ TEST CASES START
 
 from Utilities import *
 
-#Load the emulator shared library. Call the c-functions directly from 
-#the python script using ctypes modules.
-emulator = CDLL(DLLPATH + "libemulator.so")
-
-#Make the test cases fail, if not implemented yet -> read RF guide 
-
 def begin_serial(baudRate):
 	"""Set baud rate for the serial port"""
-	emulator.serialBegin(c_uint(baudRate))
+	getattr(emulator, begin)(Serial, c_uint(baudRate))
 
 def end_serial():
 	"""Close the serial port to be used as GPIO pins"""
 
 def write_byte(byt):
 	"""Write 1 byte to the serial port"""
-	emulator.serialWrite(c_wchar(byt).value)
+	getattr(emulator, write)(Serial, c_wchar(byt).value)
 
 def write_bytes(byts):
 	"""Write series of bytes to the serial port"""

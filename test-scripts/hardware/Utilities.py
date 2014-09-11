@@ -203,8 +203,6 @@ GPIO = {
 ##########################################################################################################
 def compile(testPath, testCase):
     try:
-    	args = shlex.split('/usr/bin/python ./../../../../Tools/stm32flasher/stm32flash.py \
-    		-w ./hardware/ellduino/' + testCase + '.hex -A 0x00000000 /dev/ttyUSB0');
     	os.chdir(testPath + testCase + "/");        
         args = shlex.split("'make -s PLATFORM=hardware'");
         p = subprocess.Popen(args, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE);

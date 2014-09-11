@@ -52,7 +52,7 @@ fi
 case "$command" in
 	list)
 	    echo ""
-		ls -1 test-cases/|grep ".rest"|awk -F '.' '{print $1}'
+		ls -1 test-cases/${PLATFORM}/ | grep ".rest"|awk -F '.' '{print $1}'
 	    echo ""
 		;;
 	help)
@@ -71,7 +71,7 @@ case "$command" in
 		;;
 	run-all)
 		echo ""
-		TESTS=`ls -1 test-cases/|grep ".rest"|awk -F '.' '{print $1}'`
+		TESTS=`ls -1 test-cases/${PLATFORM}/ | grep ".rest"|awk -F '.' '{print $1}'`
 		for TEST in $TESTS; do
 	    	run_test $TEST
 		done
@@ -83,7 +83,7 @@ case "$command" in
 			echo "Please provide name of the test suite to run e.g."
 			echo "./run-tests.sh run <test-suite name>"
 		else 
-			TESTS=`ls -1 test-cases/ | grep ".rest" | awk -F '.' '{print $1}'`
+			TESTS=`ls -1 test-cases/${PLATFORM}/ | grep ".rest" | awk -F '.' '{print $1}'`
 			testAvailable=false
 			testAvailable=`contains $5` 
 			if test $testAvailable = "true"; then
@@ -91,7 +91,7 @@ case "$command" in
 			elif test $testAvailable = "false"; then
 				echo "Test name is wrong. Available tests are:"
 				echo ""
-				ls -1 test-cases/|grep ".rest"|awk -F '.' '{print $1}'
+				ls -1 test-cases/ ${PLATFORM}/ | grep ".rest"|awk -F '.' '{print $1}'
 	    	else
 	    		echo "Shell script unknown error"
 	    	fi
