@@ -14,8 +14,15 @@ DLLPATH = os.environ['ELLIRUNTIME']+"/tests/robot_library/emulator/ellduino/"
 # Load the emulator shared library.
 sot_emulator = CDLL(DLLPATH + "librobot_library.so")
 
-pinMode       = getattr(sot_emulator, "t_pinMode")
-digitalRead   = getattr(sot_emulator, "t_digitalRead")
-digitalWrite  = getattr(sot_emulator, "t_digitalWrite")
-
+pinMode             = getattr(sot_emulator, "t_pinMode")
+digitalRead         = getattr(sot_emulator, "t_digitalRead")
+digitalWrite        = getattr(sot_emulator, "t_digitalWrite")
+SerialBegin         = getattr(sot_emulator, "t_SerialBegin")
+SerialWrite         = getattr(sot_emulator, "t_SerialWrite")
+SPI_Begin           = getattr(sot_emulator, "t_SPI_Begin")
+SPI_End             = getattr(sot_emulator, "t_SPI_End")
+SPI_setBitOrder     = getattr(sot_emulator, "t_SPI_setBitOrder")
+SPI_setClockDivider = getattr(sot_emulator, "t_SPI_setClockDivider")
+SPI_setDataMode     = getattr(sot_emulator, "t_SPI_setDataMode")
+SPI_Transfer        = getattr(sot_emulator, "t_SPI_transfer")
 #############################################################################################

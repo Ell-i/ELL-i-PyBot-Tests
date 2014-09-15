@@ -7,14 +7,14 @@ from Utilities import *
 
 def begin_serial(baudRate):
 	"""Set baud rate for the serial port"""
-	getattr(emulator, begin)(Serial, c_uint(baudRate))
+	SerialBegin(c_uint(baudRate));
 
 def end_serial():
 	"""Close the serial port to be used as GPIO pins"""
 
 def write_byte(byt):
 	"""Write 1 byte to the serial port"""
-	getattr(emulator, write)(Serial, c_wchar(byt).value)
+	SerialWrite(c_wchar(byt).value);
 
 def write_bytes(byts):
 	"""Write series of bytes to the serial port"""
