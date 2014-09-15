@@ -1,13 +1,13 @@
 Arduino Digital Read `<http://arduino.cc/en/Reference/DigitalRead>`_
 
-================ ============================== =================== 
-Setting          Value							Value               
-================ ============================== =================== 
-Library          BuiltIn                        \                   
-Library          DigitalRead.py                 \                   
-Test Setup       Set Pin Mode                   @{args}             
-Test Teardown    NONE                           \                   
-================ ============================== =================== 
+================ ============================== ===================
+Setting          Value				Value
+================ ============================== ===================
+Library          BuiltIn                        \
+Library          DigitalRead.py                 \
+Test Setup       Set Pin Mode                   @{args}
+Test Teardown    NONE                           \
+================ ============================== ===================
 
 ============== =================== ===================
 Variable       Value               Value
@@ -20,15 +20,15 @@ ${PIN}=        ${0}                \
 ==================== ================== ================== ========================= ================
 Test Case            Action             Argument           Argument                  Argument
 ==================== ================== ================== ========================= ================
-Read high from pin   [Documentation]    Test Setup:        Test Case: Logs       
+Read high from pin   [Documentation]    Test Setup:        Test Case: Logs
                                         Set the pin mode   state of pin as 'HIGH'.
-                                        to output.         \                         \                                    
+                                        to output.         \                         \
 \                    ${high}=           Read High          ${PORT}                   ${PIN}
 \                    Should Be Equal    ${high}            ${true}                   \
 \
-Read low from pin    [Documentation]    Test Setup:        Test Case: Logs       
+Read low from pin    [Documentation]    Test Setup:        Test Case: Logs
                                         Set the pin mode   state of pin as 'LOW'.
-                                        to output.         \                         \     
+                                        to output.         \                         \
 \                    ${low}=            Read Low           ${PORT}                   ${PIN}
-\                    Should Be Equal    ${low}             ${false}                  \ 
+\                    Should Be Equal    ${low}             ${false}                  \
 ==================== ================== ================== ========================= ================

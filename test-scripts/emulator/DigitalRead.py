@@ -7,21 +7,25 @@ from Utilities import *
 
 def set_pin_mode(port, pin):
     """Set the pin mode to output"""
-    getattr(emulator, pinMode)(GPIO[port][pin], PinMode['OUTPUT']);
+    pinMode(      GPIO[port][pin], PinMode['OUTPUT']);
 
 def read_high(port, pin):
-    getattr(emulator, digitalWrite)(GPIO[port][pin], PinValue['HIGH']);
-    getattr(emulator, pinMode)(GPIO[port][pin], PinMode['INPUT']);
+    pinMode(      GPIO[port][pin], PinMode['OUTPUT']);
+    digitalWrite( GPIO[port][pin], PinValue['HIGH']);
+    pinMode(      GPIO[port][pin], PinMode['INPUT']);
+
     high = c_bool(0);
-    high.value = getattr(emulator, digitalRead)(GPIO[port][pin]);    
+    high.value = digitalRead(GPIO[port][pin]);
     return high.value;
 
 def read_low(port, pin):
-    getattr(emulator, digitalWrite)(GPIO[port][pin], PinValue['LOW']);
-    getattr(emulator, pinMode)(GPIO[port][pin], PinMode['INPUT']);
+    pinMode(      GPIO[port][pin], PinMode['OUTPUT']);
+    digitalWrite( GPIO[port][pin], PinValue['LOW']);
+    pinMode(      GPIO[port][pin], PinMode['INPUT']);
+
     low = c_bool(1);
-    low.value = getattr(emulator, digitalRead)(GPIO[port][pin]);    
-    return low.value; 
+    low.value = digitalRead(GPIO[port][pin]);
+    return low.value;
 
 """
 TEST CASES END
