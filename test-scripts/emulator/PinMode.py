@@ -5,7 +5,7 @@ TEST CASES START
 from Utilities import *
 
 def input_pin_mode(port, pin):
-    pinMode(PIO[port][pin], PinMode['INPUT']);
+    pinMode(GPIO[port][pin], PinMode['INPUT']);
 
 def output_pin_mode(port, pin):
     pinMode(GPIO[port][pin], PinMode['OUTPUT']);
