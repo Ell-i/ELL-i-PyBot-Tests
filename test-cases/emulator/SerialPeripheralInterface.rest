@@ -10,7 +10,7 @@ Test Teardown    End SPI                        ${SLAVE_SELECT_PIN}
 ================ ============================== ============================
 
 ========================= =============
-Variable                  Value    
+Variable                  Value
 ========================= =============
 ${SLAVE_SELECT_PIN}=      ${10}
 ${VAL}=                   ${128}
@@ -34,10 +34,10 @@ ${SPI_MODE3}=             ${3}
 Test Case                           Action                Argument              Argument              Argument
 =================================== ===================== ===================== ===================== =====================
 Set Bit Order                       Bit Order             ${SLAVE_SELECT_PIN}   ${LSBFIRST}           \
-\									
+\
 Set Clock Divider                   ${oldClock}=          Clock Divider         ${SLAVE_SELECT_PIN}   ${SPI_CLOCK_DIV8}
-\								
+\
 Set Data Mode                       Data Mode             ${SLAVE_SELECT_PIN}   ${SPI_MODE0}          \
-\									
-Transfer Value From SPI             ${valueTransfered}=   Transfer Value        ${SLAVE_SELECT_PIN}   ${VAL}              
+\
+Transfer Value From SPI             ${valueTransfered}=   Transfer Value        ${SLAVE_SELECT_PIN}   ${VAL}
 =================================== ===================== ===================== ===================== =====================

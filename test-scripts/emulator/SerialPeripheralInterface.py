@@ -10,7 +10,7 @@ from Utilities import *
 #-------------------------------------------------------------------------------------------------------#
 
 setBitOrder = {
-	0: lambda slaveSelectPin: SPI_setBitOrder(c_ubyte(slaveSelectPin).value, SPIBitOrder['MSBFIRST']), 
+	0: lambda slaveSelectPin: SPI_setBitOrder(c_ubyte(slaveSelectPin).value, SPIBitOrder['MSBFIRST']),
 	1: lambda slaveSelectPin: SPI_setBitOrder(c_ubyte(slaveSelectPin).value, SPIBitOrder['LSBFIRST'])
 };
 
