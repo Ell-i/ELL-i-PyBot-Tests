@@ -1,4 +1,3 @@
-
 #The utilities module is useful for declaring datatypes, functions or classes to be
 #used by the test library scripts.
 
@@ -7,8 +6,20 @@ import subprocess
 import os
 
 from STM_constants import *
+from ellduino_gpio import *
 
-DLLPATH = os.environ['ELLIRUNTIME']+"/tests/robot_library/emulator/ellduino/"
+# Path to shared library
+DLLPATH = os.environ['ELLIRUNTIME']   \
+			+ "/tests/robot_library/" \
+			+ os.environ['PLATFORM']  \
+			+ "/"                     \
+			+ os.environ['VARIANT']   \
+			+ "/"
+#############################################################################################
+
+#############################################################################################
+# Shared library function names and loading shared library into python, common to most      #
+# of test cases                                                                             #
 #############################################################################################
 
 # Load the emulator shared library.

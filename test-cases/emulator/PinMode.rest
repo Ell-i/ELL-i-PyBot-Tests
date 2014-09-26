@@ -5,26 +5,26 @@ Setting        Value
 ============== ==========================
 Library        BuiltIn
 Library        PinMode.py
-Test Setup     \ 
+Test Setup     \
 Test Teardown  \
 ============== ==========================
 
 ================= =========
-Variable          Value   
+Variable          Value
 ================= =========
 ${PORT}=          A
-${PIN}=           ${0}           
+${PIN}=           ${2}
 ================= =========
 
 =========================== ==================== ================== ===========================
 Test Case                   Action               Argument           Argument
 =========================== ==================== ================== ===========================
-Set input pin mode          [Documentation]      Logs setting of    input pin mode   
-\                           Input Pin Mode       ${PORT}            ${PIN}        
+Set input pin mode          [Documentation]      Logs setting of    input pin mode
+\                           Input Pin Mode       ${PORT}            ${PIN}
 \
-Set output pin mode         [Documentation]      Logs setting of    output pin mode    
-\                           Output Pin Mode      ${PORT}            ${PIN}           
+Set output pin mode         [Documentation]      Logs setting of    output pin mode
+\                           Output Pin Mode      ${PORT}            ${PIN}
 \
-Set input pullup mode       [Documentation]      Logs setting of    input pin pullup mode               
-\                           Input Pullup Mode    ${PORT}            ${PIN}     
+Set input pullup mode       [Documentation]      Logs setting of    input pin pullup mode
+\                           Input Pullup Mode    ${PORT}            ${PIN}
 =========================== ==================== ================== ===========================

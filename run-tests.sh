@@ -7,13 +7,16 @@
 #############################################################################################
 
 #Command-line argument as <emulator> or <hardware>
-PLATFORM=${1}
+export PLATFORM=${1}
+
+#Command-line argument as <variant>
+export VARIANT=${2}
 
 # Path to ELL-i Runtime
-export ELLIRUNTIME=${2}
+export ELLIRUNTIME=${3}
 
 # Path to 32-bit python installation
-export PATH=${3}:${PATH}
+export PATH=${4}:${PATH}
 
 
 #############################################################################################
@@ -43,10 +46,10 @@ contains() {
 	echo "$flag"
 }
 
-if test -z "$4"; then
+if test -z "${5}"; then
 	command="help"
 else
-	command=$4
+	command=${5}
 fi
 
 case "$command" in
@@ -79,15 +82,15 @@ case "$command" in
 		;;
 	run)
 		echo ""
-		if test -z "$5"; then
+		if test -z "${6}"; then
 			echo "Please provide name of the test suite to run e.g."
 			echo "./run-tests.sh run <test-suite name>"
-		else 
+		else
 			TESTS=`ls -1 test-cases/${PLATFORM}/ | grep ".rest" | awk -F '.' '{print $1}'`
 			testAvailable=false
-			testAvailable=`contains $5` 
+			testAvailable=`contains ${6}`
 			if test $testAvailable = "true"; then
-				run_test $5
+				run_test ${6}
 			elif test $testAvailable = "false"; then
 				echo "Test name is wrong. Available tests are:"
 				echo ""
@@ -95,7 +98,7 @@ case "$command" in
 	    	else
 	    		echo "Shell script unknown error"
 	    	fi
-		fi		
+		fi
 		echo ""
 		;;
 	*)

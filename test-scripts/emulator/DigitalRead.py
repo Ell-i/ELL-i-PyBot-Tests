@@ -1,4 +1,3 @@
-
 """
 TEST CASES START
 """
@@ -13,6 +12,8 @@ def read_high(port, pin):
     pinMode(      GPIO[port][pin], PinMode['OUTPUT']);
     digitalWrite( GPIO[port][pin], PinValue['HIGH']);
     pinMode(      GPIO[port][pin], PinMode['INPUT']);
+
+    print digitalRead(GPIO[port][pin]);
 
     high = c_bool(0);
     high.value = digitalRead(GPIO[port][pin]);
