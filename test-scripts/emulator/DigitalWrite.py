@@ -5,13 +5,13 @@ TEST CASES START
 from Utilities import *
 
 def set_pin_mode(port, pin):
-    pinMode(GPIO[port][pin], PinMode['OUTPUT']);
+    VariantPinMode[ os.environ['VARIANT'] ](port, pin, 'OUTPUT')
 
 def write_high(port, pin):
-    digitalWrite(GPIO[port][pin], PinValue['HIGH']);
+	VariantDigitalWrite[ os.environ['VARIANT'] ](port, pin, 'HIGH')
 
 def write_low(port, pin):
-    digitalWrite(GPIO[port][pin], PinValue['LOW']);
+	VariantDigitalWrite[ os.environ['VARIANT'] ](port, pin, 'LOW')
 
 """
 TEST CASES END

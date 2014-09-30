@@ -1,11 +1,8 @@
 #!/bin/sh
 
-#export ELLIRUNTIME="../Runtime"
-
-#############################################################################################
-## Setting path variables by users.
-#############################################################################################
-
+#------------------------------------------------------------------------------------------------------------#
+# Setting path variables by users.
+#------------------------------------------------------------------------------------------------------------#
 #Command-line argument as <emulator> or <hardware>
 export PLATFORM=${1}
 
@@ -17,21 +14,16 @@ export ELLIRUNTIME=${3}
 
 # Path to 32-bit python installation
 export PATH=${4}:${PATH}
+#------------------------------------------------------------------------------------------------------------#
 
-
-#############################################################################################
-
-
-
-#############################################################################################
-## No user serviceable parts below.
-#############################################################################################
-
+#------------------------------------------------------------------------------------------------------------#
+# No user serviceable parts below.
+#------------------------------------------------------------------------------------------------------------#
 export PATH_TO_TESTS=`dirname $_`
 
 run_test() {
 	pybot  --pythonpath test-scripts/${PLATFORM} \
-	--outputdir $PATH_TO_TESTS/test-results/${PLATFORM}/$1 \
+	--outputdir $PATH_TO_TESTS/test-results/${PLATFORM}/${VARIANT}/$1 \
 	$PATH_TO_TESTS/test-cases/${PLATFORM}/$1.rest
 }
 
@@ -60,8 +52,11 @@ case "$command" in
 		;;
 	help)
 		echo ""
-		echo "Usage: ./run-tests.sh <PLATFORM> <path/to/elli-runtime> <path/to/python-and-pybot-binaries> <COMMAND> [parameter]"
-		echo "       e.g. ./run-tests.sh emulator /home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/ /opt/pym32/bin/ run DigitalWrite"
+		echo "Usage: ./run-tests.sh <PLATFORM> <VARIANT> <path/to/elli-runtime>"\
+		     "<path/to/python-and-pybot-binaries> <COMMAND> [parameter]"
+		echo "e.g. ./run-tests.sh emulator ellduino"\
+			 "/home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/"\
+			 "/opt/pym32/bin/ run DigitalWrite"
 		echo ""
 		echo "run-tests.sh is a script to launch emulator or hardware based test cases."
 		echo ""
@@ -94,7 +89,7 @@ case "$command" in
 			elif test $testAvailable = "false"; then
 				echo "Test name is wrong. Available tests are:"
 				echo ""
-				ls -1 test-cases/ ${PLATFORM}/ | grep ".rest"|awk -F '.' '{print $1}'
+				ls -1 test-cases/${PLATFORM}/ | grep ".rest"|awk -F '.' '{print $1}'
 	    	else
 	    		echo "Shell script unknown error"
 	    	fi
@@ -112,5 +107,4 @@ case "$command" in
 		echo ""
 		;;
 esac
-
-#############################################################################################
+#------------------------------------------------------------------------------------------------------------#

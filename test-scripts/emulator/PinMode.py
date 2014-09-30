@@ -5,13 +5,13 @@ TEST CASES START
 from Utilities import *
 
 def input_pin_mode(port, pin):
-    pinMode(GPIO[port][pin], PinMode['INPUT']);
+    VariantPinMode[ os.environ['VARIANT'] ](port, pin, 'INPUT')
 
 def output_pin_mode(port, pin):
-    pinMode(GPIO[port][pin], PinMode['OUTPUT']);
+    VariantPinMode[ os.environ['VARIANT'] ](port, pin, 'OUTPUT')
 
 def input_pullup_mode(port, pin):
-    pinMode(GPIO[port][pin], PinMode['INPUT_PULLUP']);
+	VariantPinMode[ os.environ['VARIANT'] ](port, pin, 'INPUT_PULLUP')
 
 """
 TEST CASES END
