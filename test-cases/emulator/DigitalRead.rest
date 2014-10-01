@@ -30,5 +30,5 @@ Read low from pin    [Documentation]    Test Setup:        Test Case: Logs
                                         Set the pin mode   state of pin as 'LOW'.
                                         to output.         \                         \
 \                    ${low}=            Read Low           ${PORT}                   ${PIN}
-\                    Should Be Equal    ${low}             ${false}                  \
+\                    Should Be Equal    ${low}             ${true}                   \
 ==================== ================== ================== ========================= ================

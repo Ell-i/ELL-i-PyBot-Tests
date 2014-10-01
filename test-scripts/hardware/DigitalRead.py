@@ -15,7 +15,7 @@ def compile_flash_code(setupFlag):
         elif setupFlag == "Low":
             compile_ = compile(TESTPATH, DigitalReadLow);
         else:
-            print "Wrong setup flag parameter!"        
+            print "Wrong setup flag parameter!"
 
         if compile_ != True:
             raise RuntimeError, "Compiling the source code failed!"
@@ -27,14 +27,14 @@ def compile_flash_code(setupFlag):
 def read_high():
     flash_ = flash(TESTPATH, DigitalReadHigh);
     if flash_ != True:
-        raise RuntimeError, "Flashing the device failed!"  
-    
+        raise RuntimeError, "Flashing the device failed!"
+
     os.chdir(CURRENTPATH);
-    
+
     sigrok_ = call_sigrok('1');
     if sigrok_ != True:
-        raise RuntimeError, "Call to sigrok to dump output from device failed!"        
-    
+        raise RuntimeError, "Call to sigrok to dump output from device failed!"
+
     try:
         fo = open("sigrok-output", "r");
         dataLines = fo.readlines();
@@ -56,14 +56,14 @@ def read_high():
 def read_low():
     flash_ = flash(TESTPATH, DigitalReadLow);
     if flash_ != True:
-        raise RuntimeError, "Flashing the device failed!"  
-    
+        raise RuntimeError, "Flashing the device failed!"
+
     os.chdir(CURRENTPATH);
-    
+
     sigrok_ = call_sigrok('1');
     if sigrok_ != True:
-        raise RuntimeError, "Call to sigrok to dump output from device failed!"        
-    
+        raise RuntimeError, "Call to sigrok to dump output from device failed!"
+
     try:
         fo = open("sigrok-output", "r");
         dataLines = fo.readlines();
