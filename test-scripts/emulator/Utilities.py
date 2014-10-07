@@ -45,6 +45,32 @@ SPI_setBitOrder     = getattr(sot_emulator, "t_SPI_setBitOrder")
 SPI_setClockDivider = getattr(sot_emulator, "t_SPI_setClockDivider")
 SPI_setDataMode     = getattr(sot_emulator, "t_SPI_setDataMode")
 SPI_Transfer        = getattr(sot_emulator, "t_SPI_transfer")
+GPIO_MODER          = getattr(sot_emulator, "t_GPIO_MODER")
+GPIO_PUPDR          = getattr(sot_emulator, "t_GPIO_PUPDR")
+GPIO_ODR            = getattr(sot_emulator, "t_GPIO_ODR")
+GPIO_IDR            = getattr(sot_emulator, "t_GPIO_IDR")
+if os.environ['VARIANT'] == "stm32f4discovery" or os.environ['VARIANT'] == "stm32f334nucleo":
+	GPIO_BSRRL          = getattr(sot_emulator, "t_GPIO_BSRRL")
+	GPIO_AFR            = getattr(sot_emulator, "t_GPIO_AFR")
+	GPIO_BSRRH          = getattr(sot_emulator, "t_GPIO_BSRRH")
+elif os.environ['VARIANT'] == "ellduino":
+	GPIO_BSRR           = getattr(sot_emulator, "t_GPIO_BSRR")
+	GPIO_AFR            = getattr(sot_emulator, "t_GPIO_AFR")
+	GPIO_BRR            = getattr(sot_emulator, "t_GPIO_BRR")
+else:
+	print "Unknown MCU die.  Please define."
+#-------------------------------------------------------------------------------------------#
+
+#-------------------------------------------------------------------------------------------#
+# Python callback functions. Binding through ctypes wrapper                                 #
+#-------------------------------------------------------------------------------------------#
+
+#Write wrapper functions to bind c callbacks from gpio registers
+CB_FUNC_TYPE = CFUNCTYPE(None, c_char_p, c_char_p, c_uint)
+#Python callback function to be called from gpio class member functions
+def GPIO_REGISTER_VALUES_CALLBACK(periph, name, value):
+	print '{0}:{1}:Value={2}'.format(periph, name, hex(value))
+python_cb_func = CB_FUNC_TYPE(GPIO_REGISTER_VALUES_CALLBACK)
 #-------------------------------------------------------------------------------------------#
 
 #-------------------------------------------------------------------------------------------------------------------------#
