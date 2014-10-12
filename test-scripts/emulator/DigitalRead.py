@@ -4,7 +4,7 @@ TEST CASES START
 
 from Utilities import *
 
-def set_pin_mode(port, pin):
+def set_up(port, pin):
     """Set the pin mode to output"""
     try:
         PinPortVal = ValidPort[ os.environ['VARIANT'] ](port) and ValidPin[ os.environ['VARIANT'] ](port, pin)
@@ -12,11 +12,13 @@ def set_pin_mode(port, pin):
             raise RuntimeError, "Wrong pin and/or port. Please check the port and pin value!"
     except RuntimeError, arg:
         print arg
+        return False
     else:
         VariantPinMode[ os.environ['VARIANT'] ](port, pin, 'OUTPUT')
         GPIO_PUPDR(port, python_cb_func)
         GPIO_MODER(port, python_cb_func)
         print "Pin mode set to OUTPUT"
+        return True
 
 def read_high(port, pin):
     """Read high from pin"""

@@ -12,11 +12,13 @@ def input_pin_mode(port, pin):
 			raise RuntimeError, "Wrong pin and/or port. Please check the port and pin value!"
 	except RuntimeError, arg:
 		print arg
+		return False
 	else:
 		VariantPinMode[ os.environ['VARIANT'] ](port, pin, 'INPUT')
 		GPIO_PUPDR(port, python_cb_func)
-        GPIO_MODER(port, python_cb_func)
-        print "Pin mode set to INPUT"
+		GPIO_MODER(port, python_cb_func)
+		print "Pin mode set to INPUT"
+		return True
 
 def output_pin_mode(port, pin):
 	"""Set the pin mode to output"""
@@ -26,11 +28,13 @@ def output_pin_mode(port, pin):
 			raise RuntimeError, "Wrong pin and/or port. Please check the port and pin value!"
 	except RuntimeError, arg:
 		print arg
+		return False
 	else:
 		VariantPinMode[ os.environ['VARIANT'] ](port, pin, 'OUTPUT')
 		GPIO_PUPDR(port, python_cb_func)
-        GPIO_MODER(port, python_cb_func)
-        print "Pin mode set to OUTPUT"
+		GPIO_MODER(port, python_cb_func)
+		print "Pin mode set to OUTPUT"
+		return True
 
 def input_pullup_mode(port, pin):
 	"""Set the pin mode to input_pullup"""
@@ -40,11 +44,13 @@ def input_pullup_mode(port, pin):
 			raise RuntimeError, "Wrong pin and/or port. Please check the port and pin value!"
 	except RuntimeError, arg:
 		print arg
+		return False
 	else:
 		VariantPinMode[ os.environ['VARIANT'] ](port, pin, 'INPUT_PULLUP')
 		GPIO_PUPDR(port, python_cb_func)
-        GPIO_MODER(port, python_cb_func)
-        print "Pin mode set to INPUT_PULLUP"
+		GPIO_MODER(port, python_cb_func)
+		print "Pin mode set to INPUT_PULLUP"
+		return True
 
 """
 TEST CASES END

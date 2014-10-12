@@ -1,13 +1,13 @@
 Arduino Pin Mode `<http://arduino.cc/en/Reference/PinMode>`_
 
-============== ==========================
+============== =============
 Setting        Value
-============== ==========================
+============== =============
 Library        BuiltIn
 Library        PinMode.py
 Test Setup     \
 Test Teardown  \
-============== ==========================
+============== =============
 
 ================= =========
 Variable          Value
@@ -16,15 +16,18 @@ ${PORT}=          A
 ${PIN}=           ${2}
 ================= =========
 
-=========================== ==================== ================== ===========================
-Test Case                   Action               Argument           Argument
-=========================== ==================== ================== ===========================
+=========================== ==================== ================== ======================= =========
+Test Case                   Action               Argument           Argument                Argument
+=========================== ==================== ================== ======================= =========
 Set input pin mode          [Documentation]      Logs setting of    input pin mode
-\                           Input Pin Mode       ${PORT}            ${PIN}
-\
+\                           ${passTest}=         Input Pin Mode     ${PORT}                 ${PIN}
+\                           Should Be Equal      ${passTest}        ${true}
+
 Set output pin mode         [Documentation]      Logs setting of    output pin mode
-\                           Output Pin Mode      ${PORT}            ${PIN}
-\
+\                           ${passTest}=         Output Pin Mode    ${PORT}                 ${PIN}
+\                           Should Be Equal      ${passTest}        ${true}
+
 Set input pullup mode       [Documentation]      Logs setting of    input pin pullup mode
-\                           Input Pullup Mode    ${PORT}            ${PIN}
-=========================== ==================== ================== ===========================
+\                           ${passTest}=         Input Pullup Mode  ${PORT}                 ${PIN}
+\                           Should Be Equal      ${passTest}        ${true}
+=========================== ==================== ================== ======================= =========

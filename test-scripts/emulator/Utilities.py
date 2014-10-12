@@ -67,107 +67,20 @@ else:
 
 #Write wrapper functions to bind c callbacks from gpio registers
 CB_FUNC_TYPE = CFUNCTYPE(None, c_char_p, c_char_p, c_uint)
+
 #Python callback function to be called from gpio class member functions
 def GPIO_REGISTER_VALUES_CALLBACK(periph, name, value):
 	print '{0}:{1}:Value={2}'.format(periph, name, hex(value))
+
 python_cb_func = CB_FUNC_TYPE(GPIO_REGISTER_VALUES_CALLBACK)
 #-------------------------------------------------------------------------------------------#
 
 #-------------------------------------------------------------------------------------------------------------------------#
 # Utility functions outside library test scripts                                                                          #
 #-------------------------------------------------------------------------------------------------------------------------#
-STM32FXXX_GPIO_PORTA_PINS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-STM32FXXX_GPIO_PORTB_PINS = [0, 3, 4, 5, 6, 8, 9, 10]
-STM32FXXX_GPIO_PORTC_PINS = [0, 1, 7]
-
-def Stm32fxxxValidPort(port):
-	return (port == 'A' or port == 'B' or port == 'C')
-
-def Stm32fxxxValidPin(port, pin):
-	if port == 'A':
-		for idx in STM32FXXX_GPIO_PORTA_PINS:
-			if pin == idx:
-				return True
-			else:
-				continue
-		return False
-	elif port == 'B':
-		for idx in STM32FXXX_GPIO_PORTB_PINS:
-			if pin == idx:
-				return True
-			else:
-				continue
-		return False
-	elif port == 'C':
-		for idx in STM32FXXX_GPIO_PORTC_PINS:
-			if pin == idx:
-				return True
-			else:
-				continue
-		return False
-	else:
-		return False;
-
-ELLDUINO_GPIO_PORTA_PINS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-ELLDUINO_GPIO_PORTB_PINS = [0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-ELLDUINO_GPIO_PORTC_PINS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-ELLDUINO_GPIO_PORTD_PINS = [2]
-ELLDUINO_GPIO_PORTF_PINS = [6, 7]
-
-def EllduinoValidPort(port):
-	return (port == 'A' or port == 'B' or port == 'C' or port == 'D' or port == 'F')
-
-def EllduinoValidPin(port, pin):
-	if port == 'A':
-		for idx in ELLDUINO_GPIO_PORTA_PINS:
-			if pin == idx:
-				return True
-			else:
-				continue
-		return False
-	elif port == 'B':
-		for idx in ELLDUINO_GPIO_PORTB_PINS:
-			if pin == idx:
-				return True
-			else:
-				continue
-		return False
-	elif port == 'C':
-		for idx in ELLDUINO_GPIO_PORTC_PINS:
-			if pin == idx:
-				return True
-			else:
-				continue
-		return False
-	elif port == 'D':
-		for idx in ELLDUINO_GPIO_PORTD_PINS:
-			if pin == idx:
-				return True
-			else:
-				continue
-		return False
-	elif port == 'F':
-		for idx in ELLDUINO_GPIO_PORTF_PINS:
-			if pin == idx:
-				return True
-			else:
-				continue
-		return False
-	else:
-		return False
-
-ValidPort = {
-   'stm32f4discovery': lambda port: Stm32fxxxValidPort(port),
-   'stm32f334nucleo':  lambda port: Stm32fxxxValidPort(port),
-   'ellduino':         lambda port: EllduinoValidPort(port)
-}
-
-ValidPin = {
-   'stm32f4discovery': lambda port, pin: Stm32fxxxValidPin(port, pin),
-   'stm32f334nucleo':  lambda port, pin: Stm32fxxxValidPin(port, pin),
-   'ellduino':         lambda port, pin: EllduinoValidPin(port, pin)
-}
-
+#
+#GPIO functions
+#
 VariantPinMode = {
     'stm32f4discovery': lambda port, pin, mode: pinMode( STM32FXXX_GPIO[port][pin], PinMode[mode] ),
     'stm32f334nucleo':  lambda port, pin, mode: pinMode( STM32FXXX_GPIO[port][pin], PinMode[mode] ),
@@ -184,5 +97,69 @@ VariantDigitalWrite = {
 	'stm32f4discovery': lambda port, pin, value: digitalWrite( STM32FXXX_GPIO[port][pin], PinValue[value] ),
     'stm32f334nucleo':  lambda port, pin, value: digitalWrite( STM32FXXX_GPIO[port][pin], PinValue[value] ),
     'ellduino':         lambda port, pin, value: digitalWrite( ELLDUINO_GPIO[port][pin], PinValue[value] )
+}
+
+#
+#GPIO port and pins for stm32f4discovery and stm32f334nucleo
+#
+STM32FXXX_GPIO_PORTA_PINS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+STM32FXXX_GPIO_PORTB_PINS = [0, 3, 4, 5, 6, 8, 9, 10]
+STM32FXXX_GPIO_PORTC_PINS = [0, 1, 7]
+STM32FXXX_GPIO_PORTS      = ['A', 'B', 'C']
+Stm32fxxxValidPin = {
+	'A': lambda pin: ( pin in STM32FXXX_GPIO_PORTA_PINS ),
+	'B': lambda pin: ( pin in STM32FXXX_GPIO_PORTB_PINS ),
+	'C': lambda pin: ( pin in STM32FXXX_GPIO_PORTC_PINS )
+}
+
+#
+#GPIO port and pins for ellduino
+#
+ELLDUINO_GPIO_PORTA_PINS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+ELLDUINO_GPIO_PORTB_PINS = [0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+ELLDUINO_GPIO_PORTC_PINS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+ELLDUINO_GPIO_PORTD_PINS = [2]
+ELLDUINO_GPIO_PORTF_PINS = [6, 7]
+ELLDUINO_GPIO_PORTS      = ['A', 'B', 'C', 'D', 'F']
+EllduinoValidPin = {
+	'A': lambda pin: ( pin in ELLDUINO_GPIO_PORTA_PINS ),
+	'B': lambda pin: ( pin in ELLDUINO_GPIO_PORTB_PINS ),
+	'C': lambda pin: ( pin in ELLDUINO_GPIO_PORTC_PINS ),
+	'D': lambda pin: ( pin in ELLDUINO_GPIO_PORTD_PINS ),
+	'F': lambda pin: ( pin in ELLDUINO_GPIO_PORTF_PINS )
+}
+
+#
+#Function to check port validity for variant boards
+#
+ValidPort = {
+   'stm32f4discovery': lambda port: ( port in STM32FXXX_GPIO_PORTS ),
+   'stm32f334nucleo':  lambda port: ( port in STM32FXXX_GPIO_PORTS ),
+   'ellduino':         lambda port: ( port in ELLDUINO_GPIO_PORTS )
+}
+
+#
+#Function to check pin validity for variant boards
+#
+ValidPin = {
+   'stm32f4discovery': lambda port, pin: Stm32fxxxValidPin[port](pin),
+   'stm32f334nucleo':  lambda port, pin: Stm32fxxxValidPin[port](pin),
+   'ellduino':         lambda port, pin: EllduinoValidPin[port](pin)
+}
+
+#
+#USARTs for variant boards
+#
+Stm32f4discovery_USART = [1, 2]
+Stm32f334nucleo_USART  = [1, 2, 3]
+Ellduino_USART         = [2, 1]
+
+#
+#Function to check usart validity for variant boards
+#
+ValidUSART = {
+	'stm32f4discovery': lambda usart: ( usart in Stm32f4discovery_USART ),
+	'stm32f334nucleo':  lambda usart: ( usart in Stm32f334nucleo_USART ),
+	'ellduino':         lambda usart: ( usart in Ellduino_USART )
 }
 #-------------------------------------------------------------------------------------------------------------------------#

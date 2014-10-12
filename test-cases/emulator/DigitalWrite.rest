@@ -3,30 +3,40 @@ Arduino Digital Write `<http://arduino.cc/en/Reference/DigitalWrite>`_
 ================ ================================ ==================
 Setting          Value                            Value
 ================ ================================ ==================
-Library          BuiltIn                          \
-Library          DigitalWrite.py                  \
-Test Setup       Set Pin Mode					  @{args}
-Test Teardown    NONE                             \
+Library          BuiltIn
+Library          DigitalWrite.py
+Test Setup       Set Pin Mode					  @{SETUP_VAR}
+Test Teardown    NONE
 ================ ================================ ==================
 
 ============== ============= =============
 Variable       Value         Value
 ============== ============= =============
-${PORT}=       A             \
-${PIN}=        ${2}          \
-@{args}=       ${PORT}       ${PIN}
+${PORT}=       B
+${PIN}=        ${3}
+@{SETUP_VAR}=  ${PORT}       ${PIN}
 ============== ============= =============
 
-==================== ================== ================== ==========================
-Test Case            Action             Argument           Argument
-==================== ================== ================== ==========================
+==================== ================== ================== ========================== ==========
+Test Case            Action             Argument           Argument                   Argument
+==================== ================== ================== ========================== ==========
 Write high to pin    [Documentation]    Test Setup:        Test Case: Change state
                                         Set the pin mode   of pin to 'HIGH'.
-                                        to output.         \
-\                    Write High         ${PORT}            ${PIN}
-\
+                                        to output.
+\                    ${passTest}=       Write High         ${PORT}                    ${PIN}
+\                    Should Be Equal    ${passTest}        ${true}
+
 Write low to pin     [Documentation]    Test Setup:        Test Case: Change state
                                         Set the pin mode   of pin to 'LOW'.
-                                        to output.         \
-\                    Write Low          ${PORT}            ${PIN}
-==================== ================== ================== ==========================
+                                        to output.
+\                    ${passTest}=       Write Low          ${PORT}                    ${PIN}
+\                    Should Be Equal    ${passTest}        ${true}
+==================== ================== ================== ========================== ==========
+
+============= ================= ================== ================== ===============
+Keyword       Action            Argument           Argument           Argument
+============= ================= ================== ================== ===============
+Set Pin Mode  [Arguments]       @{setupVar}
+\             ${passSetup}=     Set Up             @{setupVar}[0]     @{setupVar}[1]
+\             Should Be Equal   ${passSetup}       ${true}
+============= ================= ================== ================== ===============

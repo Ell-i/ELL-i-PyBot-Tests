@@ -5,16 +5,47 @@ TEST CASES START
 
 from Utilities import *
 
-def begin_serial(baudRate):
+#
+#function ord() would get the int value of the char.
+#And in case you want to convert back after playing with the number,
+#function chr() does the trick.
+#
+
+#
+# TODO -> return true or false value from the below functions to assert
+# test as pass or fail
+#
+
+def set_up(baudRate, usart):
 	"""Set baud rate for the serial port"""
-	SerialBegin(c_uint(baudRate));
+	try:
+		USART_VAL = ValidUSART[ os.environ['VARIANT'] ](usart)
+		if USART_VAL == False:
+			raise RuntimeError, "Wrong USART port. Please check the USART port value!"
+	except RuntimeError, arg:
+		print arg
+		return False
+	else:
+		SerialBegin(c_uint(baudRate).value, c_int(usart).value)
+		print "USART port ready for serial communication."
+		return True
 
 def end_serial():
 	"""Close the serial port to be used as GPIO pins"""
 
-def write_byte(byt):
+def write_byte(byt, usart):
 	"""Write 1 byte to the serial port"""
-	SerialWrite(c_wchar(byt).value);
+	try:
+		USART_VAL = ValidUSART[ os.environ['VARIANT'] ](usart)
+		if USART_VAL == False:
+			raise RuntimeError, "Wrong USART port. Please check the USART port value!"
+	except RuntimeError, arg:
+		print arg
+		return False
+	else:
+		SerialWrite(ord(c_char_p(byt).value), c_int(usart).value)
+		print '{0}{1}'.format("One byte serially transmitted through port number -> ", usart)
+		return True
 
 def write_bytes(byts):
 	"""Write series of bytes to the serial port"""
