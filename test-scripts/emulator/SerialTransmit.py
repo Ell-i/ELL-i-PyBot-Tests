@@ -5,6 +5,8 @@ TEST CASES START
 
 from Utilities import *
 
+import pythonCallback
+
 #
 #function ord() would get the int value of the char.
 #And in case you want to convert back after playing with the number,
@@ -20,13 +22,20 @@ def set_up(baudRate, usart):
 	"""Set baud rate for the serial port"""
 	try:
 		USART_VAL = ValidUSART[ os.environ['VARIANT'] ](usart)
+		ReferenceVal = pythonCallback.set_python_callback_reference(python_cb_func)
 		if USART_VAL == False:
 			raise RuntimeError, "Wrong USART port. Please check the USART port value!"
+		elif ReferenceVal != None:
+			raise RuntimeError, "Fails setting python ctype function reference!"
 	except RuntimeError, arg:
 		print arg
 		return False
 	else:
-		SerialBegin(c_uint(baudRate).value, c_int(usart).value)
+		SerialBegin( c_uint(baudRate).value, usart )
+		#GPIO_AFR( 'A', python_cb_func )
+		#GPIO_MODER( 'A', python_cb_func )
+		#USART_BRR( usart, python_cb_func )
+		#USART_CR1( usart, python_cb_func )
 		print "USART port ready for serial communication."
 		return True
 
@@ -43,7 +52,7 @@ def write_byte(byt, usart):
 		print arg
 		return False
 	else:
-		SerialWrite(ord(c_char_p(byt).value), c_int(usart).value)
+		SerialWrite( ord(c_char_p(byt).value), usart )
 		print '{0}{1}'.format("One byte serially transmitted through port number -> ", usart)
 		return True
 

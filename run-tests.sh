@@ -21,8 +21,9 @@ export PATH=${4}:${PATH}
 #------------------------------------------------------------------------------------------------------------#
 export PATH_TO_TESTS=`dirname $_`
 
+#:${ELLIRUNTIME}/tests/robot_library/${PLATFORM}/${VARIANT}/pythonCallback.so
 run_test() {
-	pybot  --pythonpath test-scripts/${PLATFORM} \
+	pybot  --pythonpath test-scripts/${PLATFORM}:${ELLIRUNTIME}/tests/robot_library/${PLATFORM}/${VARIANT} \
 	--outputdir $PATH_TO_TESTS/test-results/${PLATFORM}/${VARIANT}/$1 \
 	$PATH_TO_TESTS/test-cases/${PLATFORM}/$1.rest
 }

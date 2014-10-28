@@ -5,6 +5,8 @@ TEST CASES START
 
 from Utilities import *
 
+import pythonCallback
+
 #-------------------------------------------------------------------------------------------------------------------------#
 # Utility functions outside library test functions
 #-------------------------------------------------------------------------------------------------------------------------#
@@ -36,9 +38,19 @@ setDataMode = {
 #-------------------------------------------------------------------------------------------------------------------------#
 # Test Library Functions
 #-------------------------------------------------------------------------------------------------------------------------#
+
+#XXX: To Do: Return true or false from the test cases to pass or fail the test
 def begin_spi(slaveSelectPin):
 	"""Begin the SPI port"""
-	SPI_Begin(c_ubyte(slaveSelectPin).value)
+	try:
+		ReferenceVal = pythonCallback.set_python_callback_reference(python_cb_func)
+		if ReferenceVal != None:
+			raise RuntimeError, "Fails setting python ctype function reference!"
+	except RuntimeError, arg:
+		print arg
+		#return False
+	else:
+		SPI_Begin(c_ubyte(slaveSelectPin).value)
 
 def end_spi(slaveSelectPin):
 	"""End the SPI port"""
