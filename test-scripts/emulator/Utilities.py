@@ -18,7 +18,7 @@ if os.environ['VARIANT'] != "ellduino" and \
 else:
 	# Path to shared library
 	DLLPATH = os.environ['ELLIRUNTIME']   \
-				+ "/tests/robot_library/" \
+				+ "/stm32/tests/robot_library/" \
 				+ os.environ['PLATFORM']  \
 				+ "/"                     \
 				+ os.environ['VARIANT']   \
