@@ -12,8 +12,6 @@ export VARIANT=${2}
 # Path to ELL-i Runtime
 export ELLIRUNTIME=${3}
 
-# Path to 32-bit python installation
-export PATH=${4}:${PATH}
 #------------------------------------------------------------------------------------------------------------#
 
 #------------------------------------------------------------------------------------------------------------#
@@ -39,10 +37,10 @@ contains() {
 	echo "$flag"
 }
 
-if test -z "${5}"; then
+if test -z "${4}"; then
 	command="help"
 else
-	command=${5}
+	command=${4}
 fi
 
 case "$command" in
@@ -78,15 +76,15 @@ case "$command" in
 		;;
 	run)
 		echo ""
-		if test -z "${6}"; then
+		if test -z "${5}"; then
 			echo "Please provide name of the test suite to run e.g."
 			echo "./run-tests.sh run <test-suite name>"
 		else
 			TESTS=`ls -1 test-cases/${PLATFORM}/ | grep ".rest" | awk -F '.' '{print $1}'`
 			testAvailable=false
-			testAvailable=`contains ${6}`
+			testAvailable=`contains ${5}`
 			if test $testAvailable = "true"; then
-				run_test ${6}
+				run_test ${5}
 			elif test $testAvailable = "false"; then
 				echo "Test name is wrong. Available tests are:"
 				echo ""
