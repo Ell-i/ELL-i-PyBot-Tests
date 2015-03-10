@@ -52,18 +52,19 @@ case "$command" in
 	help)
 		echo ""
 		echo "Usage: ./run-tests.sh <PLATFORM> <VARIANT> <path/to/elli-runtime>"\
-		     "<path/to/python-and-pybot-binaries> <COMMAND> [parameter]"
+		     "<COMMAND> [parameter]"
 		echo "e.g. ./run-tests.sh emulator ellduino"\
 			 "/home/asif/Ell-i-Working-Directory/Ell-i-Software-Development/Runtime/"\
-			 "/opt/pym32/bin/ run DigitalWrite"
+			 "run DigitalWrite"
 		echo ""
 		echo "run-tests.sh is a script to launch emulator or hardware based test cases."
 		echo ""
 		echo "Commands: "
-		echo "          list                  List the available test cases"
-		echo "          run <test-suite name> Run the particular test case"
-		echo "          run-all               Run all the test cases"
-		echo "          help                  This help document"
+		echo "          <COMMAND>  [parameter]        Description"
+		echo "          list                          List the available test cases"
+		echo "          run        [test-suite name]  Run the particular test case"
+		echo "          run-all                       Run all the test cases"
+		echo "          help                          This help document"
 		echo ""
 		;;
 	run-all)
@@ -99,10 +100,11 @@ case "$command" in
 		echo ""
 		echo "Wrong command. Please use the following commands;"
 		echo "Commands: "
-		echo "          list                  List the available test cases"
-		echo "          run <test-suite name> Run the particular test case"
-		echo "          run-all               Run all the test cases"
-		echo "          help                  This help document"
+		echo "          <COMMAND>  [parameter]        Description"
+		echo "          list                          List the available test cases"
+		echo "          run        [test-suite name]  Run the particular test case"
+		echo "          run-all                       Run all the test cases"
+		echo "          help                          This help document"
 		echo ""
 		;;
 esac
