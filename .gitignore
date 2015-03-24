@@ -54,6 +54,7 @@ docs/_build/
 
 # ELL-i Robot Framework
 test-results/
+*.pyc
 
 # vi backup files
 *~
